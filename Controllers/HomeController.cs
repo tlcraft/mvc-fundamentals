@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using mvc_fundamentals.Models;
 using System.Diagnostics;
@@ -7,16 +8,20 @@ namespace mvc_fundamentals.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> logger;
+        private readonly ISystemTime systemTime;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISystemTime systemTime)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.systemTime = systemTime;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = new IndexModel();
+            model.SystemTime = systemTime.CurrentDate;
+            return View(model);
         }
 
         public IActionResult Privacy()

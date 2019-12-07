@@ -1,3 +1,4 @@
+using Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,7 @@ namespace mvc_fundamentals
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<ISystemTime, SystemTime>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
