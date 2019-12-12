@@ -1,6 +1,5 @@
 ﻿using Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MvcApplication.Models;
 using System.Diagnostics;
 
@@ -8,12 +7,10 @@ namespace MvcApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> logger;
         private readonly ICurrentDateService currentDateService;
 
-        public HomeController(ILogger<HomeController> logger, ICurrentDateService currentDateService)
+        public HomeController(ICurrentDateService currentDateService)
         {
-            this.logger = logger;
             this.currentDateService = currentDateService;
         }
 
