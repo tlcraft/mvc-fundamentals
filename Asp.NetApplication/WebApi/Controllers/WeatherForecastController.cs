@@ -1,6 +1,5 @@
 ﻿using Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +15,10 @@ namespace WebApi.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> logger;
         private readonly ICurrentDateService systemDateService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, ICurrentDateService systemDateService)
+        public WeatherForecastController(ICurrentDateService systemDateService)
         {
-            this.logger = logger;
             this.systemDateService = systemDateService;
         }
 
