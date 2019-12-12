@@ -1,6 +1,6 @@
 ﻿namespace Core
 {
-    public interface ISystemTime
+    public interface ICurrentDateService
     {
         string CurrentDate { get; }
     }

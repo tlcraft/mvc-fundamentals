@@ -2,7 +2,7 @@
 
 namespace Core
 {
-    public class SystemTime : ISystemTime
+    public class CurrentDateService : ICurrentDateService
     {
         public string CurrentDate
         {

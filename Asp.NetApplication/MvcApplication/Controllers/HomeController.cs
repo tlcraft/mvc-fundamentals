@@ -1,26 +1,23 @@
 ﻿using Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using mvc_fundamentals.Models;
+using MvcApplication.Models;
 using System.Diagnostics;
 
-namespace mvc_fundamentals.Controllers
+namespace MvcApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> logger;
-        private readonly ISystemTime systemTime;
+        private readonly ICurrentDateService currentDateService;
 
-        public HomeController(ILogger<HomeController> logger, ISystemTime systemTime)
+        public HomeController(ICurrentDateService currentDateService)
         {
-            this.logger = logger;
-            this.systemTime = systemTime;
+            this.currentDateService = currentDateService;
         }
 
         public IActionResult Index()
         {
             var model = new IndexModel();
-            model.SystemTime = systemTime.CurrentDate;
+            model.CurrentDate = currentDateService.CurrentDate;
             return View(model);
         }
 

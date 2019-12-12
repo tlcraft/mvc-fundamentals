@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace mvc_fundamentals
+namespace WebApi
 {
     public class Startup
     {
@@ -19,8 +19,8 @@ namespace mvc_fundamentals
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddSingleton<ISystemTime, SystemTime>();
+            services.AddControllers();
+            services.AddSingleton<ICurrentDateService, CurrentDateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,11 +30,8 @@ namespace mvc_fundamentals
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            app.UseStaticFiles();
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -42,9 +39,7 @@ namespace mvc_fundamentals
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

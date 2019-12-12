@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29521.150
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{2F107FD1-EFFF-456B-B74C-B242DCDDCA6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{F9A0C074-3AB2-48F8-834E-70FB2FDCA96F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication", "MvcApplication\MvcApplication.csproj", "{9E95B00D-9940-41EC-A0C1-0369C04D97C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F107FD1-EFFF-456B-B74C-B242DCDDCA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F107FD1-EFFF-456B-B74C-B242DCDDCA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F107FD1-EFFF-456B-B74C-B242DCDDCA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F107FD1-EFFF-456B-B74C-B242DCDDCA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A0C074-3AB2-48F8-834E-70FB2FDCA96F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A0C074-3AB2-48F8-834E-70FB2FDCA96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A0C074-3AB2-48F8-834E-70FB2FDCA96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A0C074-3AB2-48F8-834E-70FB2FDCA96F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E95B00D-9940-41EC-A0C1-0369C04D97C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E95B00D-9940-41EC-A0C1-0369C04D97C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E95B00D-9940-41EC-A0C1-0369C04D97C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E95B00D-9940-41EC-A0C1-0369C04D97C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF8B9C4F-3851-4B32-A649-135BE8E6CC88}
+	EndGlobalSection
+EndGlobal
