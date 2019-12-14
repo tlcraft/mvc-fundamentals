@@ -1,5 +1,5 @@
-﻿using Core;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Shared;
 
 namespace RazorPagesApp.Pages
 {
