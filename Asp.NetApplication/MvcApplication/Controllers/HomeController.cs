@@ -1,6 +1,6 @@
-﻿using Core;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MvcApplication.Models;
+using Shared;
 using System.Diagnostics;
 
 namespace MvcApplication.Controllers
