@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DAL;
+using Microsoft.AspNetCore.Mvc;
 using MvcApplication.Models;
 using Shared;
 using System.Diagnostics;
@@ -18,6 +19,8 @@ namespace MvcApplication.Controllers
         {
             var model = new IndexModel();
             model.CurrentDate = currentDateService.CurrentDate;
+            model.User = GetExampleUser();
+
             return View(model);
         }
 
@@ -30,6 +33,17 @@ namespace MvcApplication.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private User GetExampleUser()
+        {
+            using (var context = new EfContext())
+            {
+
+                var user = context.Users.Find(1);
+
+                return user;
+            }
         }
     }
 }
