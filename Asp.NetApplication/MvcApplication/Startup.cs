@@ -1,5 +1,7 @@
+using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +23,13 @@ namespace MvcApplication
         {
             services.AddControllersWithViews();
             services.AddSingleton<ICurrentDateService, CurrentDateService>();
+
+            services.AddEntityFrameworkSqlServer();
+            services.AddDbContext<EfContext>((serviceProvider, options) =>
+            {
+                options.UseSqlServer(@"Server=(local);Database=UserDb;Trusted_Connection=True;");
+                options.UseInternalServiceProvider(serviceProvider);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
