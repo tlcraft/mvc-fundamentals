@@ -39,12 +39,9 @@ namespace MvcApplication.Controllers
 
         private User GetExampleUser()
         {
-            using (var context = this.efContext)
-            {
-                var user = context.Users.Find(1);
+            var user = this.efContext.Users.Find(1);
 
-                return user;
-            }
+            return user;
         }
     }
 }
