@@ -8,11 +8,13 @@ namespace MvcApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly EfContext efContext;
         private readonly ICurrentDateService currentDateService;
 
-        public HomeController(ICurrentDateService currentDateService)
+        public HomeController(ICurrentDateService currentDateService, EfContext context)
         {
             this.currentDateService = currentDateService;
+            this.efContext = context;
         }
 
         public IActionResult Index()
@@ -37,9 +39,8 @@ namespace MvcApplication.Controllers
 
         private User GetExampleUser()
         {
-            using (var context = new EfContext())
+            using (var context = this.efContext)
             {
-
                 var user = context.Users.Find(1);
 
                 return user;
