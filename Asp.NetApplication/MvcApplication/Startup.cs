@@ -27,7 +27,7 @@ namespace MvcApplication
             services.AddEntityFrameworkSqlServer();
             services.AddDbContext<EfContext>((serviceProvider, options) =>
             {
-                options.UseSqlServer(@"Server=(local);Database=UserDb;Trusted_Connection=True;");
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
                 options.UseInternalServiceProvider(serviceProvider);
             });
         }
