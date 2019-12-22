@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DAL;
+using Microsoft.AspNetCore.Mvc;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,12 @@ namespace WebApi.Controllers
         };
 
         private readonly ICurrentDateService systemDateService;
+        private readonly EfContext efContext;
 
-        public WeatherForecastController(ICurrentDateService systemDateService)
+        public WeatherForecastController(ICurrentDateService systemDateService, EfContext efContext)
         {
             this.systemDateService = systemDateService;
+            this.efContext = efContext;
         }
 
         [HttpGet]
@@ -40,6 +43,14 @@ namespace WebApi.Controllers
         public string GetCurrentDate()
         {
             return systemDateService.CurrentDate;
+        }
+
+        [HttpGet]
+        [Route("user")]
+        public string GetCurrentUser()
+        {
+            var user = this.efContext.Users.Find(1);
+            return user.FirstName;
         }
     }
 }
