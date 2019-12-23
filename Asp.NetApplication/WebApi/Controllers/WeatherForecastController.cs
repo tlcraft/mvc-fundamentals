@@ -1,6 +1,6 @@
 ﻿using DAL;
 using Microsoft.AspNetCore.Mvc;
-using Shared;
+using Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
