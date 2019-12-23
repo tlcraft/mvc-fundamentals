@@ -1,6 +1,6 @@
 ﻿using DAL;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shared;
+using Shared.Services;
 
 namespace RazorPagesApp.Pages
 {
