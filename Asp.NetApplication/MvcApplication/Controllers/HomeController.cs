@@ -1,7 +1,7 @@
 ﻿using DAL;
 using Microsoft.AspNetCore.Mvc;
 using MvcApplication.Models;
-using Shared;
+using Shared.Services;
 using System.Diagnostics;
 
 namespace MvcApplication.Controllers
