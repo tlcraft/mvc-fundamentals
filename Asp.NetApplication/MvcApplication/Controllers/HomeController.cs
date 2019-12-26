@@ -1,20 +1,20 @@
-﻿using DAL;
+﻿using System.Diagnostics;
+using DAL;
 using Microsoft.AspNetCore.Mvc;
 using MvcApplication.Models;
 using Shared.Services;
-using System.Diagnostics;
 
 namespace MvcApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly EfContext efContext;
+        private readonly IUserService userService;
         private readonly ICurrentDateService currentDateService;
 
-        public HomeController(ICurrentDateService currentDateService, EfContext context)
+        public HomeController(ICurrentDateService currentDateService, IUserService userService)
         {
             this.currentDateService = currentDateService;
-            this.efContext = context;
+            this.userService = userService;
         }
 
         public IActionResult Index()
@@ -39,7 +39,7 @@ namespace MvcApplication.Controllers
 
         private User GetExampleUser()
         {
-            var user = this.efContext.Users.Find(1);
+            var user = this.userService.GetUser(1);
 
             return user;
         }
