@@ -30,6 +30,7 @@ namespace RazorPagesApp
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
                 options.UseInternalServiceProvider(serviceProvider);
             });
+            services.AddSingleton<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
