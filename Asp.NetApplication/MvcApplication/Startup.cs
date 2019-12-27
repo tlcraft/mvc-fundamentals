@@ -30,7 +30,7 @@ namespace MvcApplication
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
                 options.UseInternalServiceProvider(serviceProvider);
             });
-            services.AddSingleton<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
