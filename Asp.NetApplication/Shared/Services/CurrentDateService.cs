@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shared
+namespace Shared.Services
 {
     public class CurrentDateService : ICurrentDateService
     {

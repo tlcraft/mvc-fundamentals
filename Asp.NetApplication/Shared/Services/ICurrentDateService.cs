@@ -1,4 +1,4 @@
-﻿namespace Shared
+﻿namespace Shared.Services
 {
     public interface ICurrentDateService
     {

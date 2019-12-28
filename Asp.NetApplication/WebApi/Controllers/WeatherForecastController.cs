@@ -1,9 +1,8 @@
-﻿using DAL;
-using Microsoft.AspNetCore.Mvc;
-using Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Shared.Services;
 
 namespace WebApi.Controllers
 {
@@ -17,12 +16,12 @@ namespace WebApi.Controllers
         };
 
         private readonly ICurrentDateService systemDateService;
-        private readonly EfContext efContext;
+        private readonly IUserService userService;
 
-        public WeatherForecastController(ICurrentDateService systemDateService, EfContext efContext)
+        public WeatherForecastController(ICurrentDateService systemDateService, IUserService userService)
         {
             this.systemDateService = systemDateService;
-            this.efContext = efContext;
+            this.userService = userService;
         }
 
         [HttpGet]
@@ -47,9 +46,9 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("user")]
-        public string GetCurrentUser()
+        public string GetCurrentUser([FromQuery] long userId)
         {
-            var user = this.efContext.Users.Find(1);
+            var user = this.userService.GetUser(userId);
             return user.FirstName;
         }
     }
