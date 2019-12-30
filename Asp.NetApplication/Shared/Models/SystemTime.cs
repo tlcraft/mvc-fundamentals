@@ -13,5 +13,10 @@ namespace Shared.Models
         public ushort Minute;
         public ushort Second;
         public ushort Milsecond;
+
+        public override string ToString()
+        {
+            return $"{Month} {Day}, {Year}";
+        }
     }
 }
