@@ -1,6 +1,6 @@
 ﻿namespace Shared.Services
 {
-    public interface NativeCurrentDateFactory
+    public interface INativeCurrentDateFactory
     {
         ICurrentDateService GetNativeCurrentDateService();
     }
