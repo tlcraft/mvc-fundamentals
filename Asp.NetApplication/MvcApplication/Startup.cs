@@ -22,7 +22,7 @@ namespace MvcApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<ICurrentDateService, CurrentDateService>();
+            services.AddSingleton<INativeCurrentDateFactory, NativeCurrentDateFactory>();
 
             services.AddEntityFrameworkSqlServer();
             services.AddDbContext<EfContext>((serviceProvider, options) =>
