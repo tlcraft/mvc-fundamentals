@@ -2,9 +2,9 @@
 
 namespace Shared.Services
 {
-    public class NativeCurrentDateFactory : INativeCurrentDateFactory
+    public class CurrentDateServiceFactory : ICurrentDateServiceFactory
     {
-        public ICurrentDateService GetNativeCurrentDateService()
+        public ICurrentDateService GetCurrentDateService()
         {
             var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
