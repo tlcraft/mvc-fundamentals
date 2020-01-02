@@ -10,9 +10,9 @@ namespace RazorPagesApp.Pages
         public string CurrentDate { get; set; }
         public string UserName { get; set; }
 
-        public IndexModel(ICurrentDateService currentDateService, IUserService userService)
+        public IndexModel(ICurrentDateServiceFactory currentDateServiceFactory, IUserService userService)
         {
-            this.currentDateService = currentDateService;
+            this.currentDateService = currentDateServiceFactory.GetCurrentDateService();
             this.userService = userService;
         }
 

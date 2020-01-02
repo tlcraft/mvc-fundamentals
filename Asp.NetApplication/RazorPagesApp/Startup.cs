@@ -22,7 +22,7 @@ namespace RazorPagesApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<ICurrentDateService, CurrentDateService>();
+            services.AddSingleton<ICurrentDateServiceFactory, CurrentDateServiceFactory>();
 
             services.AddEntityFrameworkSqlServer();
             services.AddDbContext<EfContext>((serviceProvider, options) =>
