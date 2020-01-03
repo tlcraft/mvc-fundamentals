@@ -13,7 +13,7 @@ namespace Shared.Services
 
         public User GetUser(long id)
         {
-            var user = this.efContext.Users.Find(1);
+            var user = this.efContext.Users.Find(id);
             return user;
         }
     }
