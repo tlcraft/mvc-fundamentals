@@ -46,7 +46,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("user")]
-        public string GetCurrentUser([FromQuery] long userId)
+        public string GetCurrentUser([FromQuery] int userId)
         {
             var user = this.userService.GetUser(userId);
             return user.FirstName;

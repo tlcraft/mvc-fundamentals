@@ -3,6 +3,6 @@ namespace Shared.Services
 {
     public interface IUserService
     {
-        User GetUser(long id);
+        User GetUser(int id);
     }
 }

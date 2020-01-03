@@ -11,7 +11,7 @@ namespace Shared.Services
             this.efContext = efContext;
         }
 
-        public User GetUser(long id)
+        public User GetUser(int id)
         {
             var user = this.efContext.Users.Find(id);
             return user;
