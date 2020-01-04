@@ -11,9 +11,9 @@ namespace MvcApplication.Controllers
         private readonly IUserService userService;
         private readonly ICurrentDateService currentDateService;
 
-        public HomeController(ICurrentDateService currentDateService, IUserService userService)
+        public HomeController(ICurrentDateServiceFactory currentDateServiceFactory, IUserService userService)
         {
-            this.currentDateService = currentDateService;
+            this.currentDateService = currentDateServiceFactory.GetCurrentDateService();
             this.userService = userService;
         }
 

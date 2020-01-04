@@ -22,7 +22,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ICurrentDateService, CurrentDateService>();
+            services.AddSingleton<ICurrentDateServiceFactory, CurrentDateServiceFactory>();
             services.AddEntityFrameworkSqlServer();
             services.AddDbContext<EfContext>((serviceProvider, options) =>
             {

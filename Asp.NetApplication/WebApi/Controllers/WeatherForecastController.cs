@@ -18,9 +18,9 @@ namespace WebApi.Controllers
         private readonly ICurrentDateService systemDateService;
         private readonly IUserService userService;
 
-        public WeatherForecastController(ICurrentDateService systemDateService, IUserService userService)
+        public WeatherForecastController(ICurrentDateServiceFactory currentDateServiceFactory, IUserService userService)
         {
-            this.systemDateService = systemDateService;
+            this.systemDateService = currentDateServiceFactory.GetCurrentDateService();
             this.userService = userService;
         }
 
@@ -46,7 +46,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("user")]
-        public string GetCurrentUser([FromQuery] long userId)
+        public string GetCurrentUser([FromQuery] int userId)
         {
             var user = this.userService.GetUser(userId);
             return user.FirstName;
