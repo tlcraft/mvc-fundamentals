@@ -10,6 +10,7 @@ namespace MvcFrameworkApp.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Shared.Services;
 
     public static class NinjectWebCommon 
     {
@@ -44,6 +45,7 @@ namespace MvcFrameworkApp.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+                kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
 
                 RegisterServices(kernel);
                 return kernel;
