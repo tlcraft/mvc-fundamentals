@@ -5,7 +5,8 @@ namespace MvcFrameworkApp.App_Start
 {
     using System;
     using System.Web;
-
+    using DAL;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -45,7 +46,9 @@ namespace MvcFrameworkApp.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+                kernel.Bind<DbContext>().To<EfContext>().InRequestScope();
                 kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
+                kernel.Bind<IUserService>().To<UserService>();
 
                 RegisterServices(kernel);
                 return kernel;
