@@ -1,8 +1,9 @@
-﻿using DAL;
+﻿using Shared.Models;
+
 namespace Shared.Services
 {
     public interface IUserService
     {
-        User GetUser(int id);
+        UserModel GetUser(int id);
     }
 }
