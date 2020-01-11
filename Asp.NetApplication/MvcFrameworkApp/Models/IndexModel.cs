@@ -1,10 +1,10 @@
-﻿using DAL;
+﻿using Shared.Models;
 
 namespace MvcFrameworkApp.Models
 {
     public class IndexModel
     {
         public string CurrentDate { get; set; }
-        public User User { get; set; }
+        public UserModel User { get; set; }
     }
 }
