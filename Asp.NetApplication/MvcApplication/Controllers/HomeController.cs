@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using DAL;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MvcApplication.Models;
+using Shared.Models;
 using Shared.Services;
+using System.Diagnostics;
 
 namespace MvcApplication.Controllers
 {
@@ -37,7 +37,7 @@ namespace MvcApplication.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private User GetExampleUser()
+        private UserModel GetExampleUser()
         {
             var user = this.userService.GetUser(1);
 
