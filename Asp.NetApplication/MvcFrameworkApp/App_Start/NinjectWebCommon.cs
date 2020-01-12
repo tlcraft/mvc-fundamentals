@@ -5,6 +5,7 @@ namespace MvcFrameworkApp.App_Start
 {
     using System;
     using System.Web;
+    using AutoMapper;
     using DAL;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -46,9 +47,6 @@ namespace MvcFrameworkApp.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                kernel.Bind<DbContext>().To<EfContext>().InRequestScope();
-                kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
-                kernel.Bind<IUserService>().To<UserService>();
 
                 RegisterServices(kernel);
                 return kernel;
@@ -66,6 +64,13 @@ namespace MvcFrameworkApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<DbContext>().To<EfContext>().InRequestScope();
+            kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
+            kernel.Bind<IUserService>().To<UserService>();
+
+            var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
+            var mapper = config.CreateMapper();
+            kernel.Bind<IMapper>().ToConstant(mapper);
         }        
     }
 }
