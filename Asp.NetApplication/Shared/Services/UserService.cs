@@ -9,17 +9,16 @@ namespace Shared.Services
         private EfContext efContext;
         private IMapper mapper;
 
-        public UserService(EfContext efContext)
+        public UserService(EfContext efContext, IMapper mapper)
         {
             this.efContext = efContext;
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserModel>());
-            this.mapper = config.CreateMapper();
+            this.mapper = mapper;
         }
 
         public UserModel GetUser(int id)
         {
             var user = this.efContext.Users.Find(id);
-            var userModel = mapper.Map<User, UserModel>(user);
+            var userModel = this.mapper.Map<User, UserModel>(user);
             return userModel;
         }
     }
