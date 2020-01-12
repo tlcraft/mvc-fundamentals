@@ -1,3 +1,4 @@
+using AutoMapper;
 using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,10 @@ namespace WebApi
                 options.UseInternalServiceProvider(serviceProvider);
             });
             services.AddTransient<IUserService, UserService>();
+
+            var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
