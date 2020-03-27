@@ -36,5 +36,15 @@ namespace MvcFrameworkApp.Controllers
 
             return View();
         }
+
+        public ContentResult ContentExample()
+        {
+            return Content("Hello World!");
+        }
+
+        public JsonResult JsonExample()
+        {
+            return Json( new { hello = "World!" }, JsonRequestBehavior.AllowGet );
+        }
     }
 }
