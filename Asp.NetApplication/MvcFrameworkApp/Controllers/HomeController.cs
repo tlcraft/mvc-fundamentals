@@ -46,5 +46,11 @@ namespace MvcFrameworkApp.Controllers
         {
             return Json( new { hello = "World!" }, JsonRequestBehavior.AllowGet );
         }
+
+        [Route("movies/releases/{year}/{month}")]
+        public ActionResult AttributeRouteExample(int year, int month)
+        {
+            return Content($"Route Example: {year} and {month}");
+        }
     }
 }
