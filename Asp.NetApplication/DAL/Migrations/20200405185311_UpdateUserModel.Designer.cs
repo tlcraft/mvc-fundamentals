@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(EfContext))]
-    [Migration("20200405184118_AddIsSubscribedToUser")]
-    partial class AddIsSubscribedToUser
+    [Migration("20200405185311_UpdateUserModel")]
+    partial class UpdateUserModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

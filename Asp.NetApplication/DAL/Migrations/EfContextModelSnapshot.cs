@@ -40,9 +40,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.MembershipType", b =>
                 {
                     b.Property<byte>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("tinyint");
 
                     b.Property<byte>("DiscountRate")
                         .HasColumnType("tinyint");
