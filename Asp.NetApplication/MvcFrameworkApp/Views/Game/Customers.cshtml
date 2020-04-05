@@ -1,0 +1,29 @@
+﻿@model Shared.Models.Customer[]
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Games</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    @Html.Partial("_NavBar")
+    <div>
+        @if (Model.Count() == 0)
+        {
+            <p>There are no customers.</p>
+        }
+        <ul>
+            @foreach (var customer in Model)
+            {
+            <li>@Html.ActionLink(customer.Name, "GetCustomer", new { customerId = customer.Id })</li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

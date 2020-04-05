@@ -1,0 +1,32 @@
+﻿@model Shared.Models.Game[]
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Games</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    @Html.Partial("_NavBar")
+    <div>
+        @if (Model.Count() == 0)
+        {
+            <p>There are no games.</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var game in Model)
+                {
+                    <li>@Html.ActionLink(game.Name, "GetGame", new { gameId = game.Id })</li>
+                }
+            </ul>
+        }
+    </div>
+</body>
+</html>

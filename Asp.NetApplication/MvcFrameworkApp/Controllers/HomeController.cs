@@ -36,5 +36,21 @@ namespace MvcFrameworkApp.Controllers
 
             return View();
         }
+
+        public ContentResult ContentExample()
+        {
+            return Content("Hello World!");
+        }
+
+        public JsonResult JsonExample()
+        {
+            return Json( new { hello = "World!" }, JsonRequestBehavior.AllowGet );
+        }
+
+        [Route("movies/releases/{year}/{month}")]
+        public ActionResult AttributeRouteExample(int year, int month)
+        {
+            return Content($"Route Example: {year} and {month}");
+        }
     }
 }
