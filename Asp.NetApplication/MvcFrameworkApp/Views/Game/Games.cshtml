@@ -23,7 +23,7 @@
             <ul>
                 @foreach (var game in Model)
                 {
-                    <li><a href="/Game/Game/@game.Id">@game.Name</a></li>
+                    <li>@Html.ActionLink(game.Name, "GetGame", new { gameId = game.Id })</li>
                 }
             </ul>
         }

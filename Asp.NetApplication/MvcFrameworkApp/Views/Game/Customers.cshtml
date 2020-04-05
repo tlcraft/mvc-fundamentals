@@ -21,7 +21,7 @@
         <ul>
             @foreach (var customer in Model)
             {
-                <li><a href="/Game/Customer/@customer.Id">@customer.Name</a></li>
+            <li>@Html.ActionLink(customer.Name, "GetCustomer", new { customerId = customer.Id })</li>
             }
         </ul>
     </div>
