@@ -4,14 +4,16 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(EfContext))]
-    partial class EfContextModelSnapshot : ModelSnapshot
+    [Migration("20200405182653_AddMembershipType")]
+    partial class AddMembershipType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,9 +42,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.MembershipType", b =>
                 {
                     b.Property<byte>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("tinyint");
 
                     b.Property<byte>("DiscountRate")
                         .HasColumnType("tinyint");
