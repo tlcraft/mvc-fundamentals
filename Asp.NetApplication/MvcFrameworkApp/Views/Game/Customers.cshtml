@@ -11,17 +11,17 @@
     <title>Games</title>
 </head>
 <body>
-    <div>
+    <table class="table table-bordered table-hover">
+        <tr><th>Customer Name</th></tr>
         @if (Model.Count() == 0)
         {
-            <p>There are no customers.</p>
+            <tr><td>There are no customers.</td></tr>
         }
-        <ul>
-            @foreach (var customer in Model)
-            {
-            <li>@Html.ActionLink(customer.Name, "GetCustomer", new { customerId = customer.Id })</li>
-            }
-        </ul>
-    </div>
+
+        @foreach (var customer in Model)
+        {
+            <tr><td>@Html.ActionLink(customer.Name, "GetCustomer", new { customerId = customer.Id })</td></tr>
+        }
+    </table>
 </body>
 </html>
