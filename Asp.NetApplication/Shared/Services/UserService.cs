@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using DAL;
 using Shared.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Shared.Services
 {
@@ -20,6 +22,13 @@ namespace Shared.Services
             var user = this.efContext.Users.Find(id);
             var userModel = this.mapper.Map<User, UserModel>(user);
             return userModel;
+        }
+
+        public List<UserModel> GetAllUsers()
+        {
+            var users = this.efContext.Users.ToList();
+            var userModels = this.mapper.Map<List<User>, List<UserModel>>(users);
+            return userModels;
         }
     }
 }
