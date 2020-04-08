@@ -6,5 +6,6 @@ namespace Shared.Services
     public interface IGameService
     {
         List<Game> GetAllGames();
+        Game GetGameById(long gameId);
     }
 }

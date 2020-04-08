@@ -22,5 +22,12 @@ namespace Shared.Services
             var gameModels = this.mapper.Map<List<Game>, List<Models.Game>>(games);
             return gameModels;
         }
+
+        public Models.Game GetGameById(long gameId)
+        {
+            var selectedGame = efContext.Games.FirstOrDefault(game => game.Id == gameId);
+            var gameModel = this.mapper.Map<Game, Models.Game>(selectedGame);
+            return gameModel;
+        }
     }
 }
