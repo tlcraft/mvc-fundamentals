@@ -67,6 +67,7 @@ namespace MvcFrameworkApp.App_Start
             kernel.Bind<DbContext>().To<EfContext>().InRequestScope();
             kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
             kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IGameService>().To<GameService>();
 
             var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             var mapper = config.CreateMapper();
