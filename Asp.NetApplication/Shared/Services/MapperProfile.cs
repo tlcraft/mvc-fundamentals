@@ -9,6 +9,7 @@ namespace Shared.Services
         public MapperProfile()
         {
             CreateMap<User, UserModel>();
+            CreateMap<Game, GameModel>();
         }
     }
 }
