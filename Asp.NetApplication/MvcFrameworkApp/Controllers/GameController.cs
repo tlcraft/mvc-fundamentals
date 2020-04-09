@@ -1,63 +1,42 @@
-﻿using Shared.Models;
-using System;
-using System.Linq;
+﻿using Shared.Services;
 using System.Web.Mvc;
 
 namespace MvcFrameworkApp.Controllers
 {
     public class GameController : Controller
     {
-        private Game[] Games = new Game[]
-        {
-            new Game
-            {
-                Id = 1,
-                Name = "Animal Crossing",
-                ReleaseDate = new DateTime(2020, 3, 20)
-            },
-            new Game
-            {
-                Id = 2,
-                Name = "Doom Eternal",
-                ReleaseDate = new DateTime(2020, 3, 20)
-            }
-        };
+        private IUserService userService;
+        private IGameService gameService;
 
-        private Customer[] Customers = new Customer[]
+        public GameController(IUserService userService, IGameService gameService)
         {
-                new Customer
-                {
-                    Id = 1,
-                    Name = "Link"
-                },
-                new Customer
-                {
-                    Id = 2,
-                    Name = "Mario"
-                }
-        };
+            this.userService = userService;
+            this.gameService = gameService;
+        }
 
         public ActionResult GetGames()
         {
-            return View("Games", Games);
+            var games = this.gameService.GetAllGames();
+            return View("Games", games);
         }
 
         [Route("Game/Game/{gameId}")]
         public ActionResult GetGame(long gameId)
         {
-            var selectedGame = Games.FirstOrDefault(game => game.Id == gameId);
+            var selectedGame = this.gameService.GetGameById(gameId);
             return View("Game", selectedGame);
         }
 
         public ActionResult GetCustomers()
         {
-            return View("Customers", Customers);
+            var customers = this.userService.GetAllUsers();
+            return View("Customers", customers);
         }
 
         [Route("Game/Customer/{customerId}")]
-        public ActionResult GetCustomer(long customerId)
+        public ActionResult GetCustomer(int customerId)
         {
-            var selectedCustomer = Customers.FirstOrDefault(customer => customer.Id == customerId);
+            var selectedCustomer = this.userService.GetUser(customerId);
             return View("Customer", selectedCustomer);
         }
     }
