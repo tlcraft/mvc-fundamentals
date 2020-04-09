@@ -1,4 +1,4 @@
-﻿@model Shared.Models.Customer[]
+﻿@model List<Shared.Models.UserModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -20,7 +20,7 @@
 
         @foreach (var customer in Model)
         {
-            <tr><td>@Html.ActionLink(customer.Name, "GetCustomer", new { customerId = customer.Id })</td></tr>
+            <tr><td>@Html.ActionLink(customer.FirstName, "GetCustomer", new { customerId = customer.Id })</td></tr>
         }
     </table>
 </body>
