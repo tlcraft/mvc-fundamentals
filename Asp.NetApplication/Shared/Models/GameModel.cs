@@ -2,7 +2,7 @@
 
 namespace Shared.Models
 {
-    public class Game
+    public class GameModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
