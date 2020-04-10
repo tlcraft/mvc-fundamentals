@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DAL;
+using Microsoft.EntityFrameworkCore;
 using Shared.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,20 @@ namespace Shared.Services
 
         public UserModel GetUser(int id)
         {
-            var user = this.efContext.Users.Find(id);
+            var user = this.efContext.Users
+                            .Where(u => u.Id == id)
+                            .Include(u => u.MembershipType)
+                            .FirstOrDefault();
             var userModel = this.mapper.Map<User, UserModel>(user);
             return userModel;
         }
 
         public List<UserModel> GetAllUsers()
         {
-            var users = this.efContext.Users.ToList();
+            var users = this.efContext
+                            .Users
+                            .Include(u => u.MembershipType)
+                            .ToList();
             var userModels = this.mapper.Map<List<User>, List<UserModel>>(users);
             return userModels;
         }
