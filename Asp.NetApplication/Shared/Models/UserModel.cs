@@ -1,4 +1,5 @@
 ﻿using DAL;
+using System;
 
 namespace Shared.Models
 {
@@ -8,5 +9,6 @@ namespace Shared.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public MembershipType MembershipType { get; set; }
+        public DateTime Birthdate { get; set; }
     }
 }
