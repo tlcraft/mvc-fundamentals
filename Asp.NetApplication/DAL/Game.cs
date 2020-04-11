@@ -7,5 +7,7 @@ namespace DAL
         public long Id { get; set; }
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
+        public GenreType GenreType { get; set; }
+        public byte? GenreTypeId { get; set; }
     }
 }
