@@ -12,7 +12,18 @@
 </head>
 <body>
     <h2>
-        @Model.FirstName
+        @Model.FirstName @Model.LastName
     </h2>
+    @if (Model.Birthdate != default(DateTime))
+    {
+        <div>@Model.Birthdate</div>
+    }
+    else
+    {
+        <div>N/A</div>
+    }
+    <div>
+        @Model.MembershipType.Name
+    </div>
 </body>
 </html>
