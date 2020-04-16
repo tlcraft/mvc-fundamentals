@@ -39,5 +39,10 @@ namespace MvcFrameworkApp.Controllers
             var selectedCustomer = this.userService.GetUser(customerId);
             return View("Customer", selectedCustomer);
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }
