@@ -23,5 +23,6 @@
             <tr><td>@Html.ActionLink(game.Name, "GetGame", new { gameId = game.Id })</td><td>@game.GenreType.Name</td></tr>
         }
     </table>
+    @Html.ActionLink("Add Game", "New")
 </body>
 </html>
