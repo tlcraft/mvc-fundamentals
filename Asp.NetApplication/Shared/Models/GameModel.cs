@@ -9,9 +9,11 @@ namespace Shared.Models
         public long Id { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
+        [Required] 
         public GenreType GenreType { get; set; }
     }
 }
