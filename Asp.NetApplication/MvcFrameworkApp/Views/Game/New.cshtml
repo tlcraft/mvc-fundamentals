@@ -1,4 +1,4 @@
-﻿@model Shared.Models.GameModel
+﻿@model MvcFrameworkApp.Models.NewGameModel
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,12 +9,16 @@
 @using (Html.BeginForm("Create", "Game"))
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.LabelFor(m => m.GameModel.Name)
+        @Html.TextBoxFor(m => m.GameModel.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ReleaseDate)
-        @Html.EditorFor(m => m.ReleaseDate, new { @class = "form-control", @type = "date" })
+        @Html.LabelFor(m => m.GameModel.ReleaseDate)
+        @Html.EditorFor(m => m.GameModel.ReleaseDate, new { @class = "form-control", @type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.GameModel.GenreType)
+        @Html.DropDownListFor(m => m.GameModel.GenreType.Id, new SelectList(Model.GenreTypes, "Id", "Name"), "Select Genre", new { @class = "form-control" })
     </div>
 }
 
