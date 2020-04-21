@@ -54,5 +54,11 @@ namespace MvcFrameworkApp.Controllers
             };
             return View(newGameModel);
         }
+
+        [HttpPost]
+        public ActionResult Create(NewGameModel newGame)
+        {
+            return RedirectToAction("GetGames", "Game");
+        }
     }
 }
