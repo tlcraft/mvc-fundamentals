@@ -1,7 +1,5 @@
-﻿using DAL;
-using MvcFrameworkApp.Models;
+﻿using MvcFrameworkApp.Models;
 using Shared.Services;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace MvcFrameworkApp.Controllers
@@ -10,13 +8,13 @@ namespace MvcFrameworkApp.Controllers
     {
         private IUserService userService;
         private IGameService gameService;
-        private EfContext efContext;
+        private IReferenceService referenceService;
 
-        public GameController(IUserService userService, IGameService gameService, EfContext efContext)
+        public GameController(IUserService userService, IGameService gameService, IReferenceService referenceService)
         {
             this.userService = userService;
             this.gameService = gameService;
-            this.efContext = efContext;
+            this.referenceService = referenceService;
         }
 
         public ActionResult GetGames()
@@ -47,7 +45,7 @@ namespace MvcFrameworkApp.Controllers
 
         public ActionResult New()
         {
-            var genres = efContext.GenreType.ToList();
+            var genres = referenceService.GetGenreTypes();
             var newGameModel = new NewGameModel
             {
                 GenreTypes = genres
@@ -58,6 +56,7 @@ namespace MvcFrameworkApp.Controllers
         [HttpPost]
         public ActionResult Create(NewGameModel newGame)
         {
+            this.gameService.AddGame(newGame.GameModel);
             return RedirectToAction("GetGames", "Game");
         }
     }
