@@ -9,7 +9,9 @@ namespace Shared.Services
         public MapperProfile()
         {
             CreateMap<User, UserModel>();
-            CreateMap<Game, GameModel>();
+            CreateMap<Game, GameModel>()
+                .ReverseMap()
+                .ForPath(s => s.GenreType, opt => opt.Ignore());
         }
     }
 }
