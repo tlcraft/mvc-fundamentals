@@ -3,16 +3,15 @@
 
 namespace MvcFrameworkApp.App_Start
 {
-    using System;
-    using System.Web;
     using AutoMapper;
     using DAL;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Web.Common;
     using Shared.Services;
+    using System;
+    using System.Web;
 
     public static class NinjectWebCommon 
     {
@@ -68,6 +67,7 @@ namespace MvcFrameworkApp.App_Start
             kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IGameService>().To<GameService>();
+            kernel.Bind<IReferenceService>().To<ReferenceService>();
 
             var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             var mapper = config.CreateMapper();
