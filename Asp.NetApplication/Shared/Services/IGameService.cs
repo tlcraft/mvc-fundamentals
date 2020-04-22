@@ -7,5 +7,6 @@ namespace Shared.Services
     {
         List<GameModel> GetAllGames();
         GameModel GetGameById(long gameId);
+        int AddGame(GameModel newGame);
     }
 }

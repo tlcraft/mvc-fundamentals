@@ -31,5 +31,13 @@ namespace Shared.Services
             var gameModel = this.mapper.Map<Game, GameModel>(selectedGame);
             return gameModel;
         }
+
+        public int AddGame(GameModel newGame)
+        {
+            var game = this.mapper.Map<GameModel, Game>(newGame);
+            this.efContext.Games.Add(game);
+            var newGameId = this.efContext.SaveChanges();
+            return newGameId;
+        }
     }
 }
