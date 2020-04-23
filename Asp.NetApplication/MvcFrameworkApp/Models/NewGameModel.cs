@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MvcFrameworkApp.Models
 {
-    public class NewGameModel
+    public class GameFormViewModel
     {
         public IEnumerable<GenreType> GenreTypes { get; set; }
         public GameModel GameModel { get; set; }
