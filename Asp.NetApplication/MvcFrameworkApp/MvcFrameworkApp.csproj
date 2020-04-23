@@ -275,7 +275,7 @@
     <Content Include="Views\Game\Games.cshtml" />
     <Content Include="Views\Game\Customers.cshtml" />
     <Content Include="Views\Game\Customer.cshtml" />
-    <Content Include="Views\Game\New.cshtml" />
+    <Content Include="Views\Game\GameForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
