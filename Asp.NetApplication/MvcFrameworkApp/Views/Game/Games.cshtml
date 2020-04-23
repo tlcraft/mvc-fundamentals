@@ -12,7 +12,7 @@
 </head>
 <body>
     <table class="table table-bordered table-hover">
-        <tr><th>Game Name</th><th>Genre</th></tr>
+        <tr><th>Game Name</th><th>Genre</th><th>Release Date</th></tr>
         @if (Model.Count() == 0)
         {
             <tr><td>There are no games.</td></tr>
@@ -20,7 +20,7 @@
 
         @foreach (var game in Model)
         {
-            <tr><td>@Html.ActionLink(game.Name, "GetGame", new { gameId = game.Id })</td><td>@game.GenreType.Name</td></tr>
+            <tr><td>@Html.ActionLink(game.Name, "Edit", new { gameId = game.Id })</td><td>@game.GenreType.Name</td><td>@Html.DisplayFor(m => game.ReleaseDate)</td></tr>
         }
     </table>
     @Html.ActionLink("Add Game", "New")
