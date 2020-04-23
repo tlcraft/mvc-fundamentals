@@ -36,8 +36,17 @@ namespace Shared.Services
         {
             var game = this.mapper.Map<GameModel, Game>(newGame);
             this.efContext.Games.Add(game);
-            var newGameId = this.efContext.SaveChanges();
-            return newGameId;
+            var totalStateEntriesWritten = this.efContext.SaveChanges();
+            return totalStateEntriesWritten;
+        }
+
+        public int UpdateGame(GameModel selectedGame)
+        {
+            var dbGame = efContext.Games.Include(game => game.GenreType).Single(game => game.Id == selectedGame.Id);
+            dbGame = this.mapper.Map<GameModel, Game>(selectedGame, dbGame);
+
+            var totalStateEntriesWritten = this.efContext.SaveChanges();
+            return totalStateEntriesWritten;
         }
     }
 }
