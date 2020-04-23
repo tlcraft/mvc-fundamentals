@@ -27,7 +27,7 @@ namespace Shared.Services
 
         public GameModel GetGameById(long gameId)
         {
-            var selectedGame = efContext.Games.Include(game => game.GenreType).FirstOrDefault(game => game.Id == gameId);
+            var selectedGame = efContext.Games.Include(game => game.GenreType).Single(game => game.Id == gameId);
             var gameModel = this.mapper.Map<Game, GameModel>(selectedGame);
             return gameModel;
         }
