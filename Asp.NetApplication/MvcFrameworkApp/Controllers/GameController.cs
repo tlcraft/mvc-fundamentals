@@ -54,9 +54,17 @@ namespace MvcFrameworkApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(GameFormViewModel newGame)
+        public ActionResult Save(GameFormViewModel newGame)
         {
-            this.gameService.AddGame(newGame.GameModel);
+            if (newGame.GameModel.Id == 0)
+            {
+                this.gameService.AddGame(newGame.GameModel);
+            }
+            else
+            {
+                this.gameService.UpdateGame(newGame.GameModel);
+            }
+
             return RedirectToAction("GetGames", "Game");
         }
 
