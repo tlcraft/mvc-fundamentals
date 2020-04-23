@@ -1,4 +1,4 @@
-﻿@model MvcFrameworkApp.Models.NewGameModel
+﻿@model MvcFrameworkApp.Models.GameFormViewModel
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,6 +20,6 @@
         @Html.LabelFor(m => m.GameModel.GenreType)
         @Html.DropDownListFor(m => m.GameModel.GenreType.Id, new SelectList(Model.GenreTypes, "Id", "Name"), "Select Genre", new { @class = "form-control" })
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 }
 
