@@ -46,18 +46,35 @@ namespace MvcFrameworkApp.Controllers
         public ActionResult New()
         {
             var genres = referenceService.GetGenreTypes();
-            var newGameModel = new NewGameModel
+            var newGameModel = new GameFormViewModel
             {
                 GenreTypes = genres
             };
-            return View(newGameModel);
+            return View("GameForm", newGameModel);
         }
 
         [HttpPost]
-        public ActionResult Create(NewGameModel newGame)
+        public ActionResult Create(GameFormViewModel newGame)
         {
             this.gameService.AddGame(newGame.GameModel);
             return RedirectToAction("GetGames", "Game");
+        }
+
+        public ActionResult Edit(int gameId)
+        {
+            var selectedGame = this.gameService.GetGameById(gameId);
+            if(selectedGame == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new GameFormViewModel
+            {
+                GameModel = selectedGame,
+                GenreTypes = this.referenceService.GetGenreTypes()
+            };
+
+            return View("GameForm", viewModel);
         }
     }
 }
