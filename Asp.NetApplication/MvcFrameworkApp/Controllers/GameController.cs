@@ -6,13 +6,11 @@ namespace MvcFrameworkApp.Controllers
 {
     public class GameController : Controller
     {
-        private IUserService userService;
         private IGameService gameService;
         private IReferenceService referenceService;
 
-        public GameController(IUserService userService, IGameService gameService, IReferenceService referenceService)
+        public GameController(IGameService gameService, IReferenceService referenceService)
         {
-            this.userService = userService;
             this.gameService = gameService;
             this.referenceService = referenceService;
         }
@@ -28,19 +26,6 @@ namespace MvcFrameworkApp.Controllers
         {
             var selectedGame = this.gameService.GetGameById(gameId);
             return View("Game", selectedGame);
-        }
-
-        public ActionResult GetCustomers()
-        {
-            var customers = this.userService.GetAllUsers();
-            return View("Customers", customers);
-        }
-
-        [Route("Game/Customer/{customerId}")]
-        public ActionResult GetCustomer(int customerId)
-        {
-            var selectedCustomer = this.userService.GetUser(customerId);
-            return View("Customer", selectedCustomer);
         }
 
         public ActionResult New()
