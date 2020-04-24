@@ -227,6 +227,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -273,8 +274,8 @@
     <Content Include="Views\Game\Game.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Game\Games.cshtml" />
-    <Content Include="Views\Game\Customers.cshtml" />
-    <Content Include="Views\Game\Customer.cshtml" />
+    <Content Include="Views\User\Customers.cshtml" />
+    <Content Include="Views\User\Customer.cshtml" />
     <Content Include="Views\Game\GameForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
