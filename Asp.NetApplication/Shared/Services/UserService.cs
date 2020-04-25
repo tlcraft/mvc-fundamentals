@@ -37,5 +37,22 @@ namespace Shared.Services
             var userModels = this.mapper.Map<List<User>, List<UserModel>>(users);
             return userModels;
         }
+
+        public int AddUser(UserModel newUser)
+        {
+            var user = this.mapper.Map<UserModel, User>(newUser);
+            this.efContext.Users.Add(user);
+            var totalStateEntriesWritten = this.efContext.SaveChanges();
+            return totalStateEntriesWritten;
+        }
+
+        public int UpdateUser(UserModel selectedUser)
+        {
+            var dbUser = efContext.Users.Include(user => user.MembershipType).Single(user => user.Id == selectedUser.Id);
+            dbUser = this.mapper.Map<UserModel, User>(selectedUser, dbUser);
+
+            var totalStateEntriesWritten = this.efContext.SaveChanges();
+            return totalStateEntriesWritten;
+        }
     }
 }

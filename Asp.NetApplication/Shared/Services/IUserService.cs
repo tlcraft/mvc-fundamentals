@@ -7,5 +7,7 @@ namespace Shared.Services
     {
         List<UserModel> GetAllUsers();
         UserModel GetUser(int id);
+        int AddUser(UserModel newUser);
+        int UpdateUser(UserModel selectedUser);
     }
 }
