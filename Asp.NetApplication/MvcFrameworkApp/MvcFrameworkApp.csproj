@@ -231,8 +231,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerFormViewModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
-    <Compile Include="Models\NewGameModel.cs" />
+    <Compile Include="Models\GameFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +276,7 @@
     <Content Include="Views\User\Customers.cshtml" />
     <Content Include="Views\User\Customer.cshtml" />
     <Content Include="Views\Game\GameForm.cshtml" />
+    <Content Include="Views\User\CustomerForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
