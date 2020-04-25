@@ -26,7 +26,7 @@
                 <td>@customer.MembershipType.Name</td>
                 @if (customer.Birthdate != default(DateTime))
                 {
-                    <td>@customer.Birthdate</td>
+                    <td>@Html.DisplayFor(m => customer.Birthdate)</td>
                 }
                 else
                 {

@@ -16,7 +16,7 @@
     </h2>
     @if (Model.Birthdate != default(DateTime))
     {
-        <div>@Model.Birthdate</div>
+        <div>@Html.DisplayFor(m => Model.Birthdate)</div>
     }
     else
     {
