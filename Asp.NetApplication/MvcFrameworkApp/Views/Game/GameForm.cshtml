@@ -4,7 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New</h2>
+@if (Model.GameModel != null && Model.GameModel.Id > 0)
+{
+    <h2>Edit</h2>
+}
+else
+{
+    <h2>New</h2>
+}
 
 @using (Html.BeginForm("Save", "Game"))
 {
