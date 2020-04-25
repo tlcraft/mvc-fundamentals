@@ -6,5 +6,6 @@ namespace Shared.Services
     public interface IReferenceService
     {
         IEnumerable<GenreType> GetGenreTypes();
+        IEnumerable<MembershipType> GetMembershipTypes();
     }
 }

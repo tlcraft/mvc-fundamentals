@@ -17,5 +17,11 @@ namespace Shared.Services
             var genres = efContext.GenreType.ToList();
             return genres;
         }
+
+        public IEnumerable<MembershipType> GetMembershipTypes()
+        {
+            var memberships = efContext.MembershipType.ToList();
+            return memberships;
+        }
     }
 }
