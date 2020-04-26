@@ -22,7 +22,7 @@
         @foreach (var customer in Model)
         {
             <tr>
-                <td>@Html.ActionLink(customer.FirstName, "Edit", new { customerId = customer.Id })</td>
+                <td>@Html.ActionLink($"{customer.FirstName} {customer.LastName}", "Edit", new { customerId = customer.Id })</td>
                 <td>@customer.MembershipType.Name</td>
                 @if (customer.Birthdate != default(DateTime))
                 {
