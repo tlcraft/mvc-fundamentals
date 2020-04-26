@@ -4,14 +4,16 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(EfContext))]
-    partial class EfContextModelSnapshot : ModelSnapshot
+    [Migration("20200410230155_AddMembershipTypeName")]
+    partial class AddMembershipTypeName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace DAL.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte?>("GenreTypeId")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -37,23 +36,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreTypeId");
-
                     b.ToTable("Games");
-                });
-
-            modelBuilder.Entity("DAL.GenreType", b =>
-                {
-                    b.Property<byte>("Id")
-                        .HasColumnName("GenreTypeId")
-                        .HasColumnType("tinyint");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GenreType");
                 });
 
             modelBuilder.Entity("DAL.MembershipType", b =>
@@ -86,9 +69,6 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("Birthdate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(255)")
@@ -108,13 +88,6 @@ namespace DAL.Migrations
                     b.HasIndex("MembershipTypeId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("DAL.Game", b =>
-                {
-                    b.HasOne("DAL.GenreType", "GenreType")
-                        .WithMany()
-                        .HasForeignKey("GenreTypeId");
                 });
 
             modelBuilder.Entity("DAL.User", b =>

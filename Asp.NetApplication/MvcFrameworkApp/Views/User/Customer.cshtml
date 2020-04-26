@@ -1,0 +1,29 @@
+﻿@model Shared.Models.UserModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer</title>
+</head>
+<body>
+    <h2>
+        @Model.FirstName @Model.LastName
+    </h2>
+    @if (Model.Birthdate != default(DateTime))
+    {
+        <div>@Html.DisplayFor(m => Model.Birthdate)</div>
+    }
+    else
+    {
+        <div>N/A</div>
+    }
+    <div>
+        @Model.MembershipType.Name
+    </div>
+</body>
+</html>

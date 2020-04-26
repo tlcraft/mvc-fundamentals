@@ -1,64 +1,73 @@
-﻿using Shared.Models;
-using System;
-using System.Linq;
+﻿using MvcFrameworkApp.Models;
+using Shared.Services;
 using System.Web.Mvc;
 
 namespace MvcFrameworkApp.Controllers
 {
     public class GameController : Controller
     {
-        private Game[] Games = new Game[]
-        {
-            new Game
-            {
-                Id = 1,
-                Name = "Animal Crossing",
-                ReleaseDate = new DateTime(2020, 3, 20)
-            },
-            new Game
-            {
-                Id = 2,
-                Name = "Doom Eternal",
-                ReleaseDate = new DateTime(2020, 3, 20)
-            }
-        };
+        private IGameService gameService;
+        private IReferenceService referenceService;
 
-        private Customer[] Customers = new Customer[]
+        public GameController(IGameService gameService, IReferenceService referenceService)
         {
-                new Customer
-                {
-                    Id = 1,
-                    Name = "Link"
-                },
-                new Customer
-                {
-                    Id = 2,
-                    Name = "Mario"
-                }
-        };
+            this.gameService = gameService;
+            this.referenceService = referenceService;
+        }
 
         public ActionResult GetGames()
         {
-            return View("Games", Games);
+            var games = this.gameService.GetAllGames();
+            return View("Games", games);
         }
 
         [Route("Game/Game/{gameId}")]
         public ActionResult GetGame(long gameId)
         {
-            var selectedGame = Games.FirstOrDefault(game => game.Id == gameId);
+            var selectedGame = this.gameService.GetGameById(gameId);
             return View("Game", selectedGame);
         }
 
-        public ActionResult GetCustomers()
+        public ActionResult New()
         {
-            return View("Customers", Customers);
+            var genres = referenceService.GetGenreTypes();
+            var newGameModel = new GameFormViewModel
+            {
+                GenreTypes = genres
+            };
+            return View("GameForm", newGameModel);
         }
 
-        [Route("Game/Customer/{customerId}")]
-        public ActionResult GetCustomer(long customerId)
+        [HttpPost]
+        public ActionResult Save(GameFormViewModel newGame)
         {
-            var selectedCustomer = Customers.FirstOrDefault(customer => customer.Id == customerId);
-            return View("Customer", selectedCustomer);
+            if (newGame.GameModel.Id == 0)
+            {
+                this.gameService.AddGame(newGame.GameModel);
+            }
+            else
+            {
+                this.gameService.UpdateGame(newGame.GameModel);
+            }
+
+            return RedirectToAction("GetGames", "Game");
+        }
+
+        public ActionResult Edit(int gameId)
+        {
+            var selectedGame = this.gameService.GetGameById(gameId);
+            if(selectedGame == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new GameFormViewModel
+            {
+                GameModel = selectedGame,
+                GenreTypes = this.referenceService.GetGenreTypes()
+            };
+
+            return View("GameForm", viewModel);
         }
     }
 }
