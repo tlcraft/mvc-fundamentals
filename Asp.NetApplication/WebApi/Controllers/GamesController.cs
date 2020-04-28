@@ -17,7 +17,6 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("games")]
         public IEnumerable<GameModel> GetGames()
         {
             var games = this.gameService.GetAllGames();
@@ -26,7 +25,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("game/{id}")]
+        [Route("{id}")]
         public IActionResult GetGame(int id)
         {
             var game = this.gameService.GetGameById(id);
@@ -40,14 +39,12 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("games")]
         public IActionResult CreateGame(GameModel newGame)
         {
             return SaveGame(newGame);
         }
 
         [HttpPut]
-        [Route("games")]
         public IActionResult UpdateGame(GameModel game)
         {
             return SaveGame(game);
