@@ -9,5 +9,6 @@ namespace Shared.Services
         GameModel GetGameById(long gameId);
         int AddGame(GameModel newGame);
         int UpdateGame(GameModel gameModel);
+        int DeleteGame(long gameId);
     }
 }
