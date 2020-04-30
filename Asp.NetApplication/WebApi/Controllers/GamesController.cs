@@ -25,10 +25,10 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
-        public IActionResult GetGame(int id)
+        [Route("{gameId}")]
+        public IActionResult GetGame(long gameId)
         {
-            var game = this.gameService.GetGameById(id);
+            var game = this.gameService.GetGameById(gameId);
 
             if(game == null)
             {
@@ -64,6 +64,25 @@ namespace WebApi.Controllers
             else
             {
                 this.gameService.AddGame(game);
+            }
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("{gameId}")]
+        public IActionResult DeleteGame(long gameId)
+        {
+            if(gameId <= 0)
+            {
+                return BadRequest();
+            }
+
+            var recordsUpdated = this.gameService.DeleteGame(gameId);
+
+            if(recordsUpdated <= 0)
+            {
+                return NotFound();
             }
 
             return Ok();
