@@ -82,7 +82,7 @@ namespace WebApi.Controllers
 
             if(recordsUpdated <= 0)
             {
-                return NotFound();
+                return BadRequest($"The gameId: {gameId} doesn't exist.");
             }
 
             return Ok();
