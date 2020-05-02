@@ -12,6 +12,8 @@ namespace WebApi
 {
     public class Startup
     {
+        readonly string CorsPolicy = "CorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,6 +25,8 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
+
             services.AddSingleton<ICurrentDateServiceFactory, CurrentDateServiceFactory>();
             services.AddEntityFrameworkSqlServer();
             services.AddDbContext<EfContext>((serviceProvider, options) =>
@@ -50,11 +54,14 @@ namespace WebApi
 
             app.UseRouting();
 
+            app.UseCors(options => options.WithOrigins("https://localhost:44330").AllowAnyHeader().AllowAnyMethod());
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                        .RequireCors(CorsPolicy);
             });
         }
     }
