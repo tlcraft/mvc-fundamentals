@@ -11,7 +11,7 @@
     <title>Games</title>
 </head>
 <body>
-    <table class="table table-bordered table-hover">
+    <table id="games" class="table table-bordered table-hover">
         <tr><th>Game Name</th><th>Genre</th><th>Release Date</th><th>Delete</th></tr>
         @if (Model.Count() == 0)
         {
@@ -20,9 +20,29 @@
 
         @foreach (var game in Model)
         {
-            <tr><td>@Html.ActionLink(game.Name, "Edit", new { gameId = game.Id })</td><td>@game.GenreType.Name</td><td>@Html.DisplayFor(m => game.ReleaseDate)</td><td><button class="btn-link">Delete</button></td></tr>
+            <tr><td>@Html.ActionLink(game.Name, "Edit", new { gameId = game.Id })</td><td>@game.GenreType.Name</td><td>@Html.DisplayFor(m => game.ReleaseDate)</td><td><button data-game-id="@game.Id" class="btn-link js-delete">Delete</button></td></tr>
         }
     </table>
     @Html.ActionLink("Add Game", "New", null, new { @class = "btn btn-primary" })
+    @section scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $("#games .js-delete").on("click", function () {
+                    var button = $(this);
+                    if (confirm("Are you sure you want to delete this game?")) {
+                        $.ajax({
+                            url: "https://localhost:44345/api/games/" + button.attr("data-game-id"),
+                            method: "DELETE",
+                            success: function () {
+                                console.log("Deleted game.");
+                                button.parent("tr").remove();
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    }
 </body>
 </html>
