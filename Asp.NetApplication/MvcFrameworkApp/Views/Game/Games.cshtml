@@ -37,7 +37,7 @@
                             method: "DELETE",
                             success: function () {
                                 console.log("Deleted game.");
-                                button.parent("tr").remove();
+                                button.closest("tr").remove();
                             }
                         });
                     }
