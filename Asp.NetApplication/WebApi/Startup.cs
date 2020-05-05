@@ -12,8 +12,6 @@ namespace WebApi
 {
     public class Startup
     {
-        readonly string CorsPolicy = "CorsPolicy";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -60,8 +58,7 @@ namespace WebApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers()
-                        .RequireCors(CorsPolicy);
+                endpoints.MapControllers();
             });
         }
     }
