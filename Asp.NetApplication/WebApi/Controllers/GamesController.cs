@@ -85,7 +85,7 @@ namespace WebApi.Controllers
                 return BadRequest($"The gameId: {gameId} doesn't exist.");
             }
 
-            return Ok();
+            return Ok("Ok");
         }
     }
 }
