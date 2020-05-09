@@ -15,6 +15,7 @@ else
 
 @using (Html.BeginForm("Save", "Game"))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.GameModel.Name)
         @Html.TextBoxFor(m => m.GameModel.Name, new { @class = "form-control" })
