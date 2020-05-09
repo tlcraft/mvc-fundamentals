@@ -23,6 +23,8 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
+
             services.AddSingleton<ICurrentDateServiceFactory, CurrentDateServiceFactory>();
             services.AddEntityFrameworkSqlServer();
             services.AddDbContext<EfContext>((serviceProvider, options) =>
@@ -31,6 +33,7 @@ namespace WebApi
                 options.UseInternalServiceProvider(serviceProvider);
             });
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IGameService, GameService>();
 
             var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             var mapper = config.CreateMapper();
@@ -48,6 +51,8 @@ namespace WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(options => options.WithOrigins("https://localhost:44330").AllowAnyHeader().AllowAnyMethod());
 
             app.UseAuthorization();
 
