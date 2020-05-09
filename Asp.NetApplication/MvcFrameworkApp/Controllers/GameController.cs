@@ -39,6 +39,7 @@ namespace MvcFrameworkApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken()]
         public ActionResult Save(GameFormViewModel newGame)
         {
             if (newGame.GameModel.Id == 0)
