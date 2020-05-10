@@ -39,6 +39,7 @@ namespace MvcFrameworkApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken()]
         public ActionResult Save(CustomerFormViewModel newCustomer)
         {
             if (newCustomer.UserModel.Id == 0)
