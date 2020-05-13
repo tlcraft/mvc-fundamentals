@@ -42,6 +42,16 @@ namespace MvcFrameworkApp.Controllers
         [ValidateAntiForgeryToken()]
         public ActionResult Save(GameFormViewModel newGame)
         {
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new GameFormViewModel
+                {
+                    GameModel = newGame.GameModel,
+                    GenreTypes = this.referenceService.GetGenreTypes()
+                };
+                return View("GameForm", viewModel);
+            }
+
             if (newGame.GameModel.Id == 0)
             {
                 this.gameService.AddGame(newGame.GameModel);
