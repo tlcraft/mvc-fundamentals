@@ -18,18 +18,22 @@ else
     <div class="form-group">
         @Html.LabelFor(m => m.UserModel.FirstName)
         @Html.TextBoxFor(m => m.UserModel.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserModel.FirstName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.UserModel.LastName)
         @Html.TextBoxFor(m => m.UserModel.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserModel.LastName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.UserModel.Birthdate)
         @Html.EditorFor(m => m.UserModel.Birthdate, new { @class = "form-control", @type = "date" })
+        @Html.ValidationMessageFor(m => m.UserModel.Birthdate)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.UserModel.MembershipType)
         @Html.DropDownListFor(m => m.UserModel.MembershipType.Id, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserModel.MembershipType)
     </div>
     @Html.HiddenFor(m => m.UserModel.Id)
     <button type="submit" class="btn btn-primary">Save</button>
