@@ -8,6 +8,7 @@ namespace Shared.Models
     {
         public long Id { get; set; }
         [Required]
+        [StringLength(450, ErrorMessage = "Name cannot be longer than 450 characters.")]
         public string Name { get; set; }
         [Required]
         [DataType(DataType.Date)]

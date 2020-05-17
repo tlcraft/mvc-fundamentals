@@ -8,9 +8,11 @@ namespace Shared.Models
     {
         public long Id { get; set; }
         [Required]
+        [StringLength(255, ErrorMessage = "First Name cannot be longer than 255 characters.")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required]
+        [StringLength(255, ErrorMessage = "Last Name cannot be longer than 255 characters.")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required]
