@@ -39,8 +39,19 @@ namespace MvcFrameworkApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken()]
         public ActionResult Save(CustomerFormViewModel newCustomer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    UserModel = newCustomer.UserModel,
+                    MembershipTypes = this.referenceService.GetMembershipTypes()
+                };
+                return View("CustomerForm", viewModel);
+            }
+
             if (newCustomer.UserModel.Id == 0)
             {
                 this.userService.AddUser(newCustomer.UserModel);
