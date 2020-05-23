@@ -54,5 +54,20 @@ namespace Shared.Services
             var totalStateEntriesWritten = this.efContext.SaveChanges();
             return totalStateEntriesWritten;
         }
+
+        public int DeleteUser(int userId)
+        {
+            var dbUser = efContext.Users.SingleOrDefault(user => user.Id == userId);
+
+            if (dbUser == null)
+            {
+                return 0;
+            }
+
+            efContext.Users.Remove(dbUser);
+
+            var totalStateEntriesWritten = this.efContext.SaveChanges();
+            return totalStateEntriesWritten;
+        }
     }
 }
