@@ -9,5 +9,6 @@ namespace Shared.Services
         UserModel GetUser(int id);
         int AddUser(UserModel newUser);
         int UpdateUser(UserModel selectedUser);
+        int DeleteUser(int userId);
     }
 }
