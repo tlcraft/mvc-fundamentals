@@ -33,5 +33,12 @@ else
     </div>
     @Html.HiddenFor(m => m.GameModel.Id)
     <button type="submit" class="btn btn-primary">Save</button>
+    if (Model.GameModel != null && Model.GameModel.Id > 0)
+    {
+        <button id="delete-game" type="button" class="btn btn-primary">Delete</button>
+    }
+    else
+    {
+        @Html.ActionLink("Cancel", "GetGames", null, new { @class = "btn btn-primary" })
+    }
 }
-
