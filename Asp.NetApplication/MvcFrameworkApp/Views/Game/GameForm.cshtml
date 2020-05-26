@@ -42,3 +42,27 @@ else
         @Html.ActionLink("Cancel", "GetGames", null, new { @class = "btn btn-primary" })
     }
 }
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+            const deleteButton = $("#delete-game");
+            if (deleteButton) {
+                deleteButton.on("click", function () {
+                    var gameId = $("#Id").val();
+                    console.log("Deleting game id:" + gameId);
+                    if (confirm("Are you sure you want to delete this game?")) {
+                        $.ajax({
+                            url: "https://localhost:44345/games/" + gameId,
+                            method: "DELETE",
+                            success: function () {
+                                console.log("Deleted game.");
+                                window.location.href = "/Game/GetGames";
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+}
