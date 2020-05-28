@@ -7,6 +7,7 @@ namespace MvcFrameworkApp.App_Start
     using DAL;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using MvcFrameworkApp.MapperProfiles;
     using Ninject;
     using Ninject.Web.Common;
     using Shared.Services;
@@ -69,7 +70,10 @@ namespace MvcFrameworkApp.App_Start
             kernel.Bind<IGameService>().To<GameService>();
             kernel.Bind<IReferenceService>().To<ReferenceService>();
 
-            var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
+            var config = new MapperConfiguration(c => {
+                c.AddProfile(new MapperProfile());
+                c.AddProfile(new MvcMapperProfile());
+            });
             var mapper = config.CreateMapper();
             kernel.Bind<IMapper>().ToConstant(mapper);
         }        
