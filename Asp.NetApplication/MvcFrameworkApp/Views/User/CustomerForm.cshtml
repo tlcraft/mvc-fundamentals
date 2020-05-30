@@ -3,7 +3,7 @@
     ViewBag.Title = "CustomerForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Model.UserModel != null && Model.UserModel.Id > 0)
+@if (Model != null && Model.Id > 0)
 {
     <h2>Edit</h2>
 }
@@ -16,25 +16,25 @@ else
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
-        @Html.LabelFor(m => m.UserModel.FirstName)
-        @Html.TextBoxFor(m => m.UserModel.FirstName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.UserModel.FirstName)
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.UserModel.LastName)
-        @Html.TextBoxFor(m => m.UserModel.LastName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.UserModel.LastName)
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.UserModel.Birthdate)
-        @Html.EditorFor(m => m.UserModel.Birthdate, new { @class = "form-control", @type = "date" })
-        @Html.ValidationMessageFor(m => m.UserModel.Birthdate)
+        @Html.LabelFor(m => m.Birthdate)
+        @Html.EditorFor(m => m.Birthdate, new { @class = "form-control", @type = "date" })
+        @Html.ValidationMessageFor(m => m.Birthdate)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.UserModel.MembershipType)
-        @Html.DropDownListFor(m => m.UserModel.MembershipType.Id, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.UserModel.MembershipType.Id)
+        @Html.LabelFor(m => m.MembershipTypeId)
+        @Html.DropDownListFor(m => m.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MembershipTypeId)
     </div>
-    @Html.HiddenFor(m => m.UserModel.Id)
+    @Html.HiddenFor(m => m.Id)
     <button type="submit" class="btn btn-primary">Save</button>
 }
