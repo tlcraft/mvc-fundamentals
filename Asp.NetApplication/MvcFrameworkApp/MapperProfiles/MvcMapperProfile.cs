@@ -11,6 +11,9 @@ namespace MvcFrameworkApp.MapperProfiles
         {
             CreateMap<GameFormViewModel, GameModel>()
                 .ForMember(dest => dest.GenreType, opt => opt.MapFrom(src => new GenreType { Id = src.GenreTypeId } ));
+
+            CreateMap<CustomerFormViewModel, UserModel>()
+                .ForMember(dest => dest.MembershipType, opt => opt.MapFrom(src => new MembershipType { Id = src.MembershipTypeId }));
         }
     }
 }
