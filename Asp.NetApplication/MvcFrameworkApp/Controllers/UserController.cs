@@ -1,4 +1,6 @@
-﻿using MvcFrameworkApp.Models;
+﻿using AutoMapper;
+using MvcFrameworkApp.Models;
+using Shared.Models;
 using Shared.Services;
 using System.Web.Mvc;
 
@@ -8,11 +10,13 @@ namespace MvcFrameworkApp.Controllers
     {
         private IUserService userService;
         private IReferenceService referenceService;
+        private IMapper mapper;
 
-        public UserController(IUserService userService, IReferenceService referenceService)
+        public UserController(IUserService userService, IReferenceService referenceService, IMapper mapper)
         {
             this.userService = userService;
             this.referenceService = referenceService;
+            this.mapper = mapper;
         }
 
         public ActionResult GetCustomers()
@@ -46,19 +50,25 @@ namespace MvcFrameworkApp.Controllers
             {
                 var viewModel = new CustomerFormViewModel
                 {
-                    UserModel = newCustomer.UserModel,
+                    Id = newCustomer.Id ?? 0,
+                    FirstName = newCustomer.FirstName,
+                    LastName = newCustomer.LastName,
+                    MembershipTypeId = newCustomer.MembershipTypeId,
+                    Birthdate = newCustomer.Birthdate,
                     MembershipTypes = this.referenceService.GetMembershipTypes()
                 };
                 return View("CustomerForm", viewModel);
             }
 
-            if (newCustomer.UserModel.Id == 0)
+            var userModel = this.mapper.Map<CustomerFormViewModel, UserModel>(newCustomer);
+
+            if (userModel.Id == 0)
             {
-                this.userService.AddUser(newCustomer.UserModel);
+                this.userService.AddUser(userModel);
             }
             else
             {
-                this.userService.UpdateUser(newCustomer.UserModel);
+                this.userService.UpdateUser(userModel);
             }
 
             return RedirectToAction("GetCustomers", "User");
@@ -74,7 +84,11 @@ namespace MvcFrameworkApp.Controllers
 
             var viewModel = new CustomerFormViewModel
             {
-                UserModel = selectedUser,
+                Id = selectedUser.Id,
+                FirstName = selectedUser.FirstName,
+                LastName = selectedUser.LastName,
+                MembershipTypeId = selectedUser.MembershipType.Id,
+                Birthdate = selectedUser.Birthdate,
                 MembershipTypes = this.referenceService.GetMembershipTypes()
             };
 
