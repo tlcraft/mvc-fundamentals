@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (Model.GameModel != null && Model.GameModel.Id > 0)
+@if (Model != null && Model.Id > 0)
 {
     <h2>Edit</h2>
 }
@@ -17,21 +17,52 @@ else
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
-        @Html.LabelFor(m => m.GameModel.Name)
-        @Html.TextBoxFor(m => m.GameModel.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.GameModel.Name)
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.GameModel.ReleaseDate)
-        @Html.EditorFor(m => m.GameModel.ReleaseDate, new { @class = "form-control", @type = "date" })
-        @Html.ValidationMessageFor(m => m.GameModel.ReleaseDate)
+        @Html.LabelFor(m => m.ReleaseDate)
+        @Html.EditorFor(m => m.ReleaseDate, new { @class = "form-control", @type = "date" })
+        @Html.ValidationMessageFor(m => m.ReleaseDate)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.GameModel.GenreType)
-        @Html.DropDownListFor(m => m.GameModel.GenreType.Id, new SelectList(Model.GenreTypes, "Id", "Name"), "Select Genre", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.GameModel.GenreType.Id)
+        @Html.LabelFor(m => m.GenreTypeId)
+        @Html.DropDownListFor(m => m.GenreTypeId, new SelectList(Model.GenreTypes, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.GenreTypeId)
     </div>
-    @Html.HiddenFor(m => m.GameModel.Id)
+    @Html.HiddenFor(m => m.Id)
     <button type="submit" class="btn btn-primary">Save</button>
+    if (Model != null && Model.Id > 0)
+    {
+        <button id="delete-game" type="button" class="btn btn-primary">Delete</button>
+    }
+    else
+    {
+        @Html.ActionLink("Cancel", "GetGames", null, new { @class = "btn btn-primary" })
+    }
 }
-
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+            const deleteButton = $("#delete-game");
+            if (deleteButton) {
+                deleteButton.on("click", function () {
+                    var gameId = $("#Id").val();
+                    console.log("Deleting game id: " + gameId);
+                    if (confirm("Are you sure you want to delete this game?")) {
+                        $.ajax({
+                            url: "https://localhost:44345/games/" + gameId,
+                            method: "DELETE",
+                            success: function () {
+                                console.log("Deleted game.");
+                                window.location.href = "/Game/GetGames";
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+}

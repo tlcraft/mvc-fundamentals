@@ -1,4 +1,6 @@
-﻿using MvcFrameworkApp.Models;
+﻿using AutoMapper;
+using MvcFrameworkApp.Models;
+using Shared.Models;
 using Shared.Services;
 using System.Web.Mvc;
 
@@ -8,11 +10,13 @@ namespace MvcFrameworkApp.Controllers
     {
         private IGameService gameService;
         private IReferenceService referenceService;
+        private IMapper mapper;
 
-        public GameController(IGameService gameService, IReferenceService referenceService)
+        public GameController(IGameService gameService, IReferenceService referenceService, IMapper mapper)
         {
             this.gameService = gameService;
             this.referenceService = referenceService;
+            this.mapper = mapper;
         }
 
         public ActionResult GetGames()
@@ -46,19 +50,25 @@ namespace MvcFrameworkApp.Controllers
             {
                 var viewModel = new GameFormViewModel
                 {
-                    GameModel = newGame.GameModel,
+                    GenreTypeId = newGame.GenreTypeId,
+                    Name = newGame.Name,
+                    ReleaseDate = newGame.ReleaseDate,
+                    Id = newGame.Id ?? 0,
                     GenreTypes = this.referenceService.GetGenreTypes()
                 };
+
                 return View("GameForm", viewModel);
             }
 
-            if (newGame.GameModel.Id == 0)
+            var gameModel = this.mapper.Map<GameFormViewModel, GameModel>(newGame);
+
+            if (gameModel.Id == 0)
             {
-                this.gameService.AddGame(newGame.GameModel);
+                this.gameService.AddGame(gameModel);
             }
             else
             {
-                this.gameService.UpdateGame(newGame.GameModel);
+                this.gameService.UpdateGame(gameModel);
             }
 
             return RedirectToAction("GetGames", "Game");
@@ -74,7 +84,10 @@ namespace MvcFrameworkApp.Controllers
 
             var viewModel = new GameFormViewModel
             {
-                GameModel = selectedGame,
+                Id = selectedGame.Id,
+                Name = selectedGame.Name,
+                ReleaseDate = selectedGame.ReleaseDate,
+                GenreTypeId = selectedGame.GenreType.Id,
                 GenreTypes = this.referenceService.GetGenreTypes()
             };
 
