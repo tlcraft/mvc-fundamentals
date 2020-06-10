@@ -15,6 +15,7 @@ namespace MvcFrameworkApp.Controllers
             this.userService = userService;
         }
 
+        [OutputCache(Duration = 30)]
         public ActionResult Index()
         {
             var model = new IndexModel();
