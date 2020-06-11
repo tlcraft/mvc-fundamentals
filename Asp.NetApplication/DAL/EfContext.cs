@@ -8,6 +8,7 @@ namespace DAL
 
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
         public DbSet<GenreType> GenreType {get; set; }
         public DbSet<MembershipType> MembershipType { get; set; }
 
