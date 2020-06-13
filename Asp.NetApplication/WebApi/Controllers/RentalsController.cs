@@ -5,7 +5,7 @@ using System;
 namespace WebApi.Controllers
 {
     [ApiController]
-    public class RentalController : ControllerBase
+    public class RentalsController : ControllerBase
     {
         [HttpPost]
         public IActionResult CreateRental(RentalModel rental)
