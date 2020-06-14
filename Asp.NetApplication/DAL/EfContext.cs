@@ -16,5 +16,18 @@ namespace DAL
         {
             optionsBuilder.UseSqlServer(@"Server=(local);Database=UserDb;Trusted_Connection=True;");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Rental>()
+                .HasOne(rental => rental.Game)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Rental>()
+                .HasOne(rental => rental.User)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }
