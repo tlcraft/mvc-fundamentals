@@ -4,7 +4,7 @@ namespace Shared.Models
 {
     public class RentalModel
     {
-        public int CustomerId { get; set; }
-        public List<int> MoveieIds { get; set; }
+        public long CustomerId { get; set; }
+        public List<long> GameIds { get; set; }
     }
 }
