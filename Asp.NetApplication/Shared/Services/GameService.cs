@@ -27,7 +27,7 @@ namespace Shared.Services
 
         public GameModel GetGameById(long gameId)
         {
-            var selectedGame = efContext.Games.Include(game => game.GenreType).SingleOrDefault(game => game.Id == gameId);
+            var selectedGame = this.efContext.Games.Include(game => game.GenreType).SingleOrDefault(game => game.Id == gameId);
             var gameModel = this.mapper.Map<Game, GameModel>(selectedGame);
             return gameModel;
         }
@@ -43,7 +43,7 @@ namespace Shared.Services
 
         public int UpdateGame(GameModel selectedGame)
         {
-            var dbGame = efContext.Games.Include(game => game.GenreType).SingleOrDefault(game => game.Id == selectedGame.Id);
+            var dbGame = this.efContext.Games.Include(game => game.GenreType).SingleOrDefault(game => game.Id == selectedGame.Id);
             dbGame = this.mapper.Map<GameModel, Game>(selectedGame, dbGame);
 
             var totalStateEntriesWritten = this.efContext.SaveChanges();
@@ -52,14 +52,14 @@ namespace Shared.Services
 
         public int DeleteGame(long gameId)
         {
-            var dbGame = efContext.Games.SingleOrDefault(game => game.Id == gameId);
+            var dbGame = this.efContext.Games.SingleOrDefault(game => game.Id == gameId);
 
             if(dbGame == null)
             {
                 return 0;
             }
 
-            efContext.Games.Remove(dbGame);
+            this.efContext.Games.Remove(dbGame);
 
             var totalStateEntriesWritten = this.efContext.SaveChanges();
             return totalStateEntriesWritten;

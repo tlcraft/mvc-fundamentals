@@ -48,7 +48,7 @@ namespace Shared.Services
 
         public int UpdateUser(UserModel selectedUser)
         {
-            var dbUser = efContext.Users.Include(user => user.MembershipType).Single(user => user.Id == selectedUser.Id);
+            var dbUser = this.efContext.Users.Include(user => user.MembershipType).Single(user => user.Id == selectedUser.Id);
             dbUser = this.mapper.Map<UserModel, User>(selectedUser, dbUser);
 
             var totalStateEntriesWritten = this.efContext.SaveChanges();
@@ -57,14 +57,14 @@ namespace Shared.Services
 
         public int DeleteUser(int userId)
         {
-            var dbUser = efContext.Users.SingleOrDefault(user => user.Id == userId);
+            var dbUser = this.efContext.Users.SingleOrDefault(user => user.Id == userId);
 
             if (dbUser == null)
             {
                 return 0;
             }
 
-            efContext.Users.Remove(dbUser);
+            this.efContext.Users.Remove(dbUser);
 
             var totalStateEntriesWritten = this.efContext.SaveChanges();
             return totalStateEntriesWritten;
