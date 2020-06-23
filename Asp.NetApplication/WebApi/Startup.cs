@@ -34,6 +34,7 @@ namespace WebApi
             });
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IGameService, GameService>();
+            services.AddTransient<IRentalService, RentalService>();
 
             var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             var mapper = config.CreateMapper();
