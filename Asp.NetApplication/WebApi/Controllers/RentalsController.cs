@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
 using Shared.Services;
-using System;
 
 namespace WebApi.Controllers
 {
@@ -18,17 +17,30 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("{userId}")]
-        public RentalModel GetRentals(long userId)
+        public RentalModel GetRentalsByUserId(long userId)
         {
             var rentals = this.rentalService.GetAllRentalsByUserId(userId);
 
             return rentals;
         }
 
-        [HttpPost]
-        public IActionResult CreateRental(RentalModel rental)
+        [HttpDelete]
+        [Route("{rentalId}")]
+        public IActionResult DeleteRental(long rentalId)
         {
-            throw new NotImplementedException();
+            if (rentalId <= 0)
+            {
+                return BadRequest();
+            }
+
+            var recordsUpdated = this.rentalService.DeleteRental(rentalId);
+
+            if (recordsUpdated <= 0)
+            {
+                return BadRequest($"The rentalId: {rentalId} doesn't exist.");
+            }
+
+            return Ok("Ok");
         }
     }
 }
