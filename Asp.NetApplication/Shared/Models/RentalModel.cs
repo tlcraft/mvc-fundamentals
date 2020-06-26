@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using DAL;
+using System;
 
 namespace Shared.Models
 {
     public class RentalModel
     {
-        public long CustomerId { get; set; }
-        public List<long> GameIds { get; set; }
+        public long Id { get; set; }
+        public DateTime DateRented { get; set; }
+        public DateTime? DateReturned { get; set; }
+        public User Customer { get; set; }
+        public Game Game { get; set; }
     }
 }
