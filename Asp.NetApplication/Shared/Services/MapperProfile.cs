@@ -15,6 +15,9 @@ namespace Shared.Services
             CreateMap<Game, GameModel>()
                 .ReverseMap()
                 .ForPath(s => s.GenreType, opt => opt.Ignore());
+
+            CreateMap<Rental, RentalModel>()
+                .ReverseMap();
         }
     }
 }
