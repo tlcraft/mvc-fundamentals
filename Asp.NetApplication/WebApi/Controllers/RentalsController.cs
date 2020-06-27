@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
 using Shared.Services;
+using System.Collections.Generic;
 
 namespace WebApi.Controllers
 {
@@ -17,7 +18,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("{userId}")]
-        public RentalModel GetRentalsByUserId(long userId)
+        public List<RentalModel> GetRentalsByUserId(long userId)
         {
             var rentals = this.rentalService.GetAllRentalsByUserId(userId);
 
