@@ -1,6 +1,9 @@
-﻿using DAL;
+﻿using AutoMapper;
+using DAL;
+using Microsoft.EntityFrameworkCore;
 using Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Shared.Services
@@ -8,10 +11,12 @@ namespace Shared.Services
     public class RentalService : IRentalService
     {
         private EfContext efContext;
+        private IMapper mapper;
 
-        public RentalService(EfContext efContext)
+        public RentalService(EfContext efContext, IMapper mapper)
         {
             this.efContext = efContext;
+            this.mapper = mapper;
         }
 
         public int AddRental(RentalModel newRental)
@@ -36,12 +41,15 @@ namespace Shared.Services
 
         public RentalModel GetRentalByRentalId(long rentalId)
         {
-            var dbRental = this.efContext.Rentals.SingleOrDefault(rental => rental.Id == rentalId);
+            var dbRental = this.efContext.Rentals
+                .Include(rental => rental.User)
+                .Include(rental => rental.Game)
+                .SingleOrDefault(rental => rental.Id == rentalId);
 
             return new RentalModel()
             {
-                CustomerId = dbRental.UserId,
-                GameIds = new System.Collections.Generic.List<long> { dbRental.GameId }
+                Customer = dbRental.User,
+                Game = dbRental.Game
             };
         }
 
@@ -50,15 +58,17 @@ namespace Shared.Services
             throw new NotImplementedException();
         }
 
-        public RentalModel GetAllRentalsByUserId(long userId)
+        public List<RentalModel> GetAllRentalsByUserId(long userId)
         {
-            var rentals = this.efContext.Rentals.Where(rental => rental.UserId == userId);
+            var rentals = this.efContext.Rentals
+                .Where(rental => rental.UserId == userId)
+                .Include(rental => rental.User)
+                .Include(rental => rental.Game)
+                .ToList();
 
-            return new RentalModel()
-            {
-                CustomerId = userId,
-                GameIds = rentals.Select(rental => rental.Id).ToList()
-            };
+            var rentalModels = this.mapper.Map<List<Rental>, List<RentalModel>>(rentals);
+
+            return rentalModels;
         }
 
         public int UpdateRental(RentalModel rentalModel)
