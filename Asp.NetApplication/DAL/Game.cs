@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DAL
 {
@@ -9,5 +10,6 @@ namespace DAL
         public DateTime ReleaseDate { get; set; }
         public GenreType GenreType { get; set; }
         public byte? GenreTypeId { get; set; }
+        public virtual ICollection<Rental> Rentals { get; set; }
     }
 }
