@@ -10,13 +10,14 @@ namespace Shared.Services
         {
             CreateMap<User, UserModel>()
                 .ReverseMap()
-                .ForPath(s => s.MembershipType, opt => opt.Ignore());
+                .ForMember(dest => dest.MembershipType, opt => opt.Ignore());
 
             CreateMap<Game, GameModel>()
                 .ReverseMap()
-                .ForPath(s => s.GenreType, opt => opt.Ignore());
+                .ForMember(dest => dest.GenreType, opt => opt.Ignore());
 
             CreateMap<Rental, RentalModel>()
+                .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.User))
                 .ReverseMap();
         }
     }
