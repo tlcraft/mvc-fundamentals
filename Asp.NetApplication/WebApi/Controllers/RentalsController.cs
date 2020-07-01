@@ -25,6 +25,32 @@ namespace WebApi.Controllers
             return rentals;
         }
 
+        [HttpPut]
+        public IActionResult UpdateRental(RentalModel rental)
+        {
+            return SaveRental(rental);
+        }
+
+        private IActionResult SaveRental(RentalModel rental)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (rental.Id > 0)
+            {
+                this.rentalService.UpdateRental(rental);
+            }
+            else
+            {
+                this.rentalService.AddRental(rental);
+            }
+
+            return Ok();
+        }
+
+
         [HttpDelete]
         [Route("{rentalId}")]
         public IActionResult DeleteRental(long rentalId)
