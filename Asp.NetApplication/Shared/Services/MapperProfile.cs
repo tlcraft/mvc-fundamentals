@@ -18,7 +18,9 @@ namespace Shared.Services
 
             CreateMap<Rental, RentalModel>()
                 .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.User))
-                .ReverseMap();
+                .ReverseMap()
+                    .ForMember(dest => dest.User, opt => opt.Ignore())
+                    .ForMember(dest => dest.Game, opt => opt.Ignore());
         }
     }
 }
