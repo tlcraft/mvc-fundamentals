@@ -47,7 +47,7 @@ namespace WebApi.Controllers
                 this.rentalService.AddRental(rental);
             }
 
-            return Ok();
+            return Ok("Ok");
         }
 
 
