@@ -73,7 +73,12 @@ namespace Shared.Services
 
         public int UpdateRental(RentalModel rentalModel)
         {
-            throw new NotImplementedException();
+            var dbRental = this.efContext.Rentals.Single(rental => rental.Id == rentalModel.Id);
+
+            dbRental = this.mapper.Map<RentalModel, Rental>(rentalModel, dbRental);
+
+            var totalStateEntriesWritten = this.efContext.SaveChanges();
+            return totalStateEntriesWritten;
         }
     }
 }
