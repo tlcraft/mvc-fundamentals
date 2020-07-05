@@ -46,16 +46,20 @@ namespace Shared.Services
                 .Include(rental => rental.Game)
                 .SingleOrDefault(rental => rental.Id == rentalId);
 
-            return new RentalModel()
-            {
-                Customer = dbRental.User,
-                Game = dbRental.Game
-            };
+            return this.mapper.Map<Rental, RentalModel>(dbRental);
         }
 
-        public RentalModel GetAllRentalsByGameId(long gameId)
+        public List<RentalModel> GetAllRentalsByGameId(long gameId)
         {
-            throw new NotImplementedException();
+            var rentals = this.efContext.Rentals
+               .Where(rental => rental.GameId == gameId)
+               .Include(rental => rental.User)
+               .Include(rental => rental.Game)
+               .ToList();
+
+            var rentalModels = this.mapper.Map<List<Rental>, List<RentalModel>>(rentals);
+
+            return rentalModels;
         }
 
         public List<RentalModel> GetAllRentalsByUserId(long userId)

@@ -7,7 +7,7 @@ namespace Shared.Services
     {
         RentalModel GetRentalByRentalId(long rentalId);
         List<RentalModel> GetAllRentalsByUserId(long userId);
-        RentalModel GetAllRentalsByGameId(long gameId);
+        List<RentalModel> GetAllRentalsByGameId(long gameId);
         int AddRental(RentalModel newRental);
         int UpdateRental(RentalModel rentalModel);
         int DeleteRental(long rentalId);
