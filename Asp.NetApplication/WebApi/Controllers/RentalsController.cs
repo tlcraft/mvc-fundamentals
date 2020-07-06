@@ -17,10 +17,28 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("{userId}")]
+        [Route("{rentalId}")]
+        public RentalModel GetRentalsByRentalId(long rentalId)
+        {
+            var rental = this.rentalService.GetRentalByRentalId(rentalId);
+
+            return rental;
+        }
+
+        [HttpGet]
+        [Route("user/{userId}")]
         public List<RentalModel> GetRentalsByUserId(long userId)
         {
             var rentals = this.rentalService.GetAllRentalsByUserId(userId);
+
+            return rentals;
+        }
+
+        [HttpGet]
+        [Route("game/{gameId}")]
+        public List<RentalModel> GetRentalsByGameId(long gameId)
+        {
+            var rentals = this.rentalService.GetAllRentalsByGameId(gameId);
 
             return rentals;
         }
