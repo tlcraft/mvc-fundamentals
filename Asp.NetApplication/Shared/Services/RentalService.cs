@@ -2,7 +2,6 @@
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Shared.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +20,11 @@ namespace Shared.Services
 
         public int AddRental(RentalModel newRental)
         {
-            throw new NotImplementedException();
+            var rental = this.mapper.Map<RentalModel, Rental>(newRental);
+            this.efContext.Rentals.Add(rental);
+
+            var totalStateEntriesWritten = this.efContext.SaveChanges();
+            return totalStateEntriesWritten;
         }
 
         public int DeleteRental(long rentalId)
