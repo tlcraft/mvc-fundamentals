@@ -52,6 +52,18 @@ namespace Shared.Services
             return this.mapper.Map<Rental, RentalModel>(dbRental);
         }
 
+        public List<RentalModel> GetAllRentals()
+        {
+            var rentals = this.efContext.Rentals
+               .Include(rental => rental.User)
+               .Include(rental => rental.Game)
+               .ToList();
+
+            var rentalModels = this.mapper.Map<List<Rental>, List<RentalModel>>(rentals);
+
+            return rentalModels;
+        }
+
         public List<RentalModel> GetAllRentalsByGameId(long gameId)
         {
             var rentals = this.efContext.Rentals
