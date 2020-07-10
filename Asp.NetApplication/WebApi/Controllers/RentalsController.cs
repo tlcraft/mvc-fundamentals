@@ -43,6 +43,12 @@ namespace WebApi.Controllers
             return rentals;
         }
 
+        [HttpPost]
+        public IActionResult CreateRental(RentalModel newRental)
+        {
+            return SaveRental(newRental);
+        }
+
         [HttpPut]
         public IActionResult UpdateRental(RentalModel rental)
         {
