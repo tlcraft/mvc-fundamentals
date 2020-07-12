@@ -56,7 +56,9 @@ namespace Shared.Services
         {
             var rentals = this.efContext.Rentals
                .Include(rental => rental.User)
+                    .ThenInclude(user => user.MembershipType)
                .Include(rental => rental.Game)
+                    .ThenInclude(game => game.GenreType)
                .ToList();
 
             var rentalModels = this.mapper.Map<List<Rental>, List<RentalModel>>(rentals);
