@@ -26,6 +26,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        public List<RentalModel> GetRentals()
+        {
+            var rentals = this.rentalService.GetAllRentals();
+
+            return rentals;
+        }
+
+        [HttpGet]
         [Route("user/{userId}")]
         public List<RentalModel> GetRentalsByUserId(long userId)
         {
