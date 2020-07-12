@@ -1,5 +1,4 @@
-﻿using DAL;
-using System;
+﻿using System;
 
 namespace Shared.Models
 {
@@ -8,7 +7,7 @@ namespace Shared.Models
         public long Id { get; set; }
         public DateTime DateRented { get; set; }
         public DateTime? DateReturned { get; set; }
-        public User Customer { get; set; }
-        public Game Game { get; set; }
+        public UserModel Customer { get; set; }
+        public GameModel Game { get; set; }
     }
 }
