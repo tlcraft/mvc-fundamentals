@@ -46,7 +46,9 @@ namespace Shared.Services
         {
             var dbRental = this.efContext.Rentals
                 .Include(rental => rental.User)
+                    .ThenInclude(user => user.MembershipType)
                 .Include(rental => rental.Game)
+                    .ThenInclude(game => game.GenreType)
                 .SingleOrDefault(rental => rental.Id == rentalId);
 
             return this.mapper.Map<Rental, RentalModel>(dbRental);
@@ -71,7 +73,9 @@ namespace Shared.Services
             var rentals = this.efContext.Rentals
                .Where(rental => rental.GameId == gameId)
                .Include(rental => rental.User)
+                    .ThenInclude(user => user.MembershipType)
                .Include(rental => rental.Game)
+                    .ThenInclude(game => game.GenreType)
                .ToList();
 
             var rentalModels = this.mapper.Map<List<Rental>, List<RentalModel>>(rentals);
@@ -84,7 +88,9 @@ namespace Shared.Services
             var rentals = this.efContext.Rentals
                 .Where(rental => rental.UserId == userId)
                 .Include(rental => rental.User)
+                    .ThenInclude(user => user.MembershipType)
                 .Include(rental => rental.Game)
+                    .ThenInclude(game => game.GenreType)
                 .ToList();
 
             var rentalModels = this.mapper.Map<List<Rental>, List<RentalModel>>(rentals);
