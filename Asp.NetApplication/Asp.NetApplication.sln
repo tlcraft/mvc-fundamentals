@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcFrameworkApp", "MvcFrameworkApp\MvcFrameworkApp.csproj", "{A4AE2BE6-D38F-466E-8E0C-85C3E080FFCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedTests", "SharedTests\SharedTests.csproj", "{C311E922-330C-40AF-AE12-6152596B510B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,12 @@ Global
 		{A4AE2BE6-D38F-466E-8E0C-85C3E080FFCC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4AE2BE6-D38F-466E-8E0C-85C3E080FFCC}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
 		{A4AE2BE6-D38F-466E-8E0C-85C3E080FFCC}.Testing|Any CPU.Build.0 = Testing|Any CPU
+		{C311E922-330C-40AF-AE12-6152596B510B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C311E922-330C-40AF-AE12-6152596B510B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C311E922-330C-40AF-AE12-6152596B510B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C311E922-330C-40AF-AE12-6152596B510B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C311E922-330C-40AF-AE12-6152596B510B}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
+		{C311E922-330C-40AF-AE12-6152596B510B}.Testing|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
