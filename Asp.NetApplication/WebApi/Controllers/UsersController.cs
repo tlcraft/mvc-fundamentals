@@ -66,7 +66,7 @@ namespace WebApi.Controllers
                 this.userService.AddUser(user);
             }
 
-            return Ok();
+            return Ok("Ok");
         }
 
         [HttpDelete]

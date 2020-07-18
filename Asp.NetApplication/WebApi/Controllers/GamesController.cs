@@ -66,7 +66,7 @@ namespace WebApi.Controllers
                 this.gameService.AddGame(game);
             }
 
-            return Ok();
+            return Ok("Ok");
         }
 
         [HttpDelete]

@@ -12,6 +12,7 @@ namespace MvcFrameworkApp.App_Start
     using Ninject.Web.Common;
     using Shared.Services;
     using System;
+    using System.Configuration;
     using System.Web;
 
     public static class NinjectWebCommon 
@@ -64,10 +65,12 @@ namespace MvcFrameworkApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<EfContext>().InRequestScope();
+            SetupDbContext(kernel);
+
             kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IGameService>().To<GameService>();
+            kernel.Bind<IRentalService>().To<RentalService>();
             kernel.Bind<IReferenceService>().To<ReferenceService>();
 
             var config = new MapperConfiguration(c => {
@@ -76,6 +79,15 @@ namespace MvcFrameworkApp.App_Start
             });
             var mapper = config.CreateMapper();
             kernel.Bind<IMapper>().ToConstant(mapper);
-        }        
+        }
+
+        private static void SetupDbContext(IKernel kernel)
+        {
+            var connectionString = ConfigurationManager.AppSettings["DefaultConnection"];
+            var options = new DbContextOptionsBuilder<EfContext>()
+                            .UseSqlServer(connectionString)
+                            .Options;
+            kernel.Bind<EfContext>().ToSelf().WithConstructorArgument("options", options);
+        }
     }
 }

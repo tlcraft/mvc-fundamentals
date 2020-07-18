@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DAL
@@ -14,5 +15,6 @@ namespace DAL
         public MembershipType MembershipType { get; set; }
         public byte? MembershipTypeId { get; set; }
         public DateTime? Birthdate { get; set; }
+        public virtual ICollection<Rental> Rentals { get; set; }
     }
 }

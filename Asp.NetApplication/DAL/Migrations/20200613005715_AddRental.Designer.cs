@@ -4,14 +4,16 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(EfContext))]
-    partial class EfContextModelSnapshot : ModelSnapshot
+    [Migration("20200613005715_AddRental")]
+    partial class AddRental
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,9 +103,11 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GameId");
+                    b.HasIndex("GameId")
+                        .IsUnique();
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Rentals");
                 });
@@ -149,14 +153,14 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Rental", b =>
                 {
                     b.HasOne("DAL.Game", "Game")
-                        .WithMany("Rentals")
-                        .HasForeignKey("GameId")
+                        .WithOne()
+                        .HasForeignKey("DAL.Rental", "GameId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("DAL.User", "User")
-                        .WithMany("Rentals")
-                        .HasForeignKey("UserId")
+                        .WithOne()
+                        .HasForeignKey("DAL.Rental", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

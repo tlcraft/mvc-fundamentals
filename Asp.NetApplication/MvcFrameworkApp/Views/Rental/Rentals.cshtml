@@ -1,0 +1,27 @@
+﻿@model List<Shared.Models.RentalModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Rentals</title>
+</head>
+<body>
+    <table id="rentals" class="table table-bordered table-hover">
+        <tr><th>Rental ID</th><th>Customer Name</th><th>Game</th></tr>
+        @if (Model.Count() == 0)
+        {
+            <tr><td>There are no rentals.</td></tr>
+        }
+
+        @foreach (var rental in Model)
+        {
+            <tr><td>@rental.Id</td><td>@rental.Customer.FirstName @rental.Customer.LastName</td><td>@rental.Game.Name</td></tr>
+        }
+    </table>
+</body>
+</html>
