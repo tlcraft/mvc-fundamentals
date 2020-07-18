@@ -70,6 +70,7 @@ namespace MvcFrameworkApp.App_Start
             kernel.Bind<ICurrentDateServiceFactory>().To<CurrentDateServiceFactory>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IGameService>().To<GameService>();
+            kernel.Bind<IRentalService>().To<RentalService>();
             kernel.Bind<IReferenceService>().To<ReferenceService>();
 
             var config = new MapperConfiguration(c => {
