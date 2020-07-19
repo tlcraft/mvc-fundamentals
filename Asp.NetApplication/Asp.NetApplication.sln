@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcFrameworkApp", "MvcFrameworkApp\MvcFrameworkApp.csproj", "{A4AE2BE6-D38F-466E-8E0C-85C3E080FFCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedTests", "SharedTests\SharedTests.csproj", "{C311E922-330C-40AF-AE12-6152596B510B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedTests", "SharedTests\SharedTests.csproj", "{C311E922-330C-40AF-AE12-6152596B510B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinMiddleware", "OwinMiddleware\OwinMiddleware.csproj", "{A341D18E-4A67-4F57-B37A-06609EC181DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +68,12 @@ Global
 		{C311E922-330C-40AF-AE12-6152596B510B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C311E922-330C-40AF-AE12-6152596B510B}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
 		{C311E922-330C-40AF-AE12-6152596B510B}.Testing|Any CPU.Build.0 = Debug|Any CPU
+		{A341D18E-4A67-4F57-B37A-06609EC181DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A341D18E-4A67-4F57-B37A-06609EC181DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A341D18E-4A67-4F57-B37A-06609EC181DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A341D18E-4A67-4F57-B37A-06609EC181DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A341D18E-4A67-4F57-B37A-06609EC181DF}.Testing|Any CPU.ActiveCfg = Release|Any CPU
+		{A341D18E-4A67-4F57-B37A-06609EC181DF}.Testing|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
