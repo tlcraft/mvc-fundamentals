@@ -20,6 +20,9 @@ namespace MvcFrameworkApp
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
+            // respond.js is a polyfill (also known as a shim) which can help websites display content across various browsers ("filling in holes in the browser")
+            // You could download that library and include it in this project following the bootstrap exampe above
+            // respond.js helps older browsers run media queries
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
