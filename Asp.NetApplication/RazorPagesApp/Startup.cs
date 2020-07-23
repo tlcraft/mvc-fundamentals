@@ -32,6 +32,7 @@ namespace RazorPagesApp
                 options.UseInternalServiceProvider(serviceProvider);
             });
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IGameService, GameService>();
 
             var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             var mapper = config.CreateMapper();
