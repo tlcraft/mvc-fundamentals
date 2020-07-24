@@ -1,0 +1,15 @@
+﻿@page
+@model RazorPagesApp.Pages.Games.GamesModel
+@{
+    ViewData["Title"] = "Games";
+}
+<table class="table">
+    @foreach(var game in Model.Games)
+    {
+        <tr>
+            <td>@game.Name</td>
+            <td>@game.ReleaseDate</td>
+            <td>@game.GenreType.Name</td>
+        </tr>
+    }
+</table>
