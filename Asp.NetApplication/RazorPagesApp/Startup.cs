@@ -33,6 +33,7 @@ namespace RazorPagesApp
             });
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IGameService, GameService>();
+            services.AddTransient<IReferenceService, ReferenceService>();
 
             var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             var mapper = config.CreateMapper();
