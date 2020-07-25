@@ -32,6 +32,17 @@ namespace Shared.Services
             return gameModel;
         }
 
+        public List<GameModel> GetGamesByName(string name = null)
+        {
+            var selectedGames = this.efContext.Games
+                .Include(game => game.GenreType)
+                .Where(game => string.IsNullOrWhiteSpace(name) || game.Name.ToLower().Contains(name.ToLower()))
+                .ToList();
+
+            var gameModels = this.mapper.Map<List<Game>, List<GameModel>>(selectedGames);
+            return gameModels;
+        }
+
         public int AddGame(GameModel newGame)
         {
             var game = this.mapper.Map<GameModel, Game>(newGame);
