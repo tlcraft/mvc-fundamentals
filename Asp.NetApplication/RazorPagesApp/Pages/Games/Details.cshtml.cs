@@ -7,7 +7,7 @@ namespace RazorPagesApp.Pages.Games
 {
     public class DetailsModel : PageModel
     {
-        private IGameService GameService { get; set; }
+        private readonly IGameService GameService;
 
         public GameModel Game { get; set; }
 
