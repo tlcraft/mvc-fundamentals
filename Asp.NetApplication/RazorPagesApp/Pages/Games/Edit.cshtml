@@ -11,14 +11,17 @@
     <div class="form-group">
         <label asp-for="Game.Name"></label>
         <input asp-for="Game.Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Game.Name"></span>
     </div>
     <div class="form-group">
         <label asp-for="Game.ReleaseDate"></label>
         <input asp-for="Game.ReleaseDate" class="form-control" />
+        <span class="text-danger" asp-validation-for="Game.ReleaseDate"></span>
     </div>
     <div class="form-group">
         <label asp-for="Game.GenreType"></label>
-        <select asp-for="Game.GenreType.Name" asp-items="Model.Genres"class="form-control"></select>
+        <select asp-for="Game.GenreType.Name" asp-items="Model.Genres" class="form-control"></select>
+        <span class="text-danger" asp-validation-for="Game.GenreType"></span>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
