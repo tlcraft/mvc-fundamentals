@@ -26,14 +26,13 @@ namespace RazorPagesApp
             services.AddSingleton<ICurrentDateServiceFactory, CurrentDateServiceFactory>();
 
             services.AddEntityFrameworkSqlServer();
-            services.AddDbContext<EfContext>((serviceProvider, options) =>
+            services.AddDbContextPool<EfContext>((serviceProvider, options) =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
-                options.UseInternalServiceProvider(serviceProvider);
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IGameService, GameService>();
-            services.AddTransient<IReferenceService, ReferenceService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IReferenceService, ReferenceService>();
 
             var config = new MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             var mapper = config.CreateMapper();
