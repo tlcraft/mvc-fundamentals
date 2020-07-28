@@ -10,6 +10,8 @@ namespace RazorPagesApp.Pages.Games
         private readonly IGameService GameService;
 
         public GameModel Game { get; set; }
+        [TempData]
+        public string Message { get; set; }
 
         public DetailsModel(IGameService gameService)
         {
