@@ -22,9 +22,16 @@ namespace RazorPagesApp.Pages.Games
             this.referenceService = referenceService;
         }
 
-        public IActionResult OnGet(long gameId)
+        public IActionResult OnGet(long? gameId)
         {
-            Game = this.gameService.GetGameById(gameId);
+            if (gameId.HasValue)
+            {
+                Game = this.gameService.GetGameById(gameId.Value);
+            }
+            else
+            {
+                Game = new GameModel();
+            }
 
             if (Game == null)
             {
@@ -37,22 +44,34 @@ namespace RazorPagesApp.Pages.Games
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var genreId = this.referenceService.GetGenreTypes().Single(genre => genre.Name == Game.GenreType.Name).Id;
-                Game.GenreType.Id = genreId;
-                gameService.UpdateGame(Game);
+                InitializeGenreTypes();
+                return Page();
             }
 
-            InitializeGenreTypes();
-            return RedirectToPage("./Detail", new { gameId = Game.Id });
+            var genreId = this.referenceService.GetGenreTypes().Single(genre => genre.Name == Game.GenreType.Name).Id;
+            Game.GenreType.Id = genreId;
+
+            long gameId;
+            if (Game.Id > 0)
+            {
+                gameService.UpdateGame(Game);
+                gameId = Game.Id;
+            }
+            else
+            {
+                gameId = gameService.AddGame(Game);
+            }
+            TempData["Message"] = "Game saved!";
+            return RedirectToPage("./Details", new { gameId = gameId });
         }
 
         private void InitializeGenreTypes()
         {
             Genres = this.referenceService.GetGenreTypes().Select(genre => new SelectListItem()
             {
-                Selected = Game.GenreType.Id == genre.Id,
+                Selected = Game.GenreType != null ? Game.GenreType.Id == genre.Id : false,
                 Text = genre.Name,
                 Value = genre.Name
             });
