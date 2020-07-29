@@ -23,6 +23,7 @@ namespace RazorPagesApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddControllers();
             services.AddSingleton<ICurrentDateServiceFactory, CurrentDateServiceFactory>();
 
             services.AddEntityFrameworkSqlServer();
@@ -63,6 +64,7 @@ namespace RazorPagesApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
