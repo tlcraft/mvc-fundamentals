@@ -17,21 +17,10 @@
     </div>
 </form>
 
-<table class="table">
-    @foreach(var game in Model.Games)
-    {
-        <tr>
-            <td>@game.Name</td>
-            <td>@game.ReleaseDate</td>
-            <td>@game.GenreType.Name</td>
-            <td>
-                <a class="btn btn-lg" asp-page="./Details" asp-route-gameId="@game.Id">Details</a>
-                <a class="btn btn-lg" asp-page="./Edit" asp-route-gameId="@game.Id">Edit</a>
-                <a class="btn btn-lg" asp-page="./Delete" asp-route-gameId="@game.Id">Delete</a>
-            </td>
-        </tr>
-    }
-</table>
+@foreach(var game in Model.Games)
+{
+    <partial name="_Summary" model="game" />
+}
 
 <a asp-page="./Edit" class="btn btn-primary">Add New Game</a>
 
