@@ -1,0 +1,14 @@
+﻿<div class="card">
+    <div class="card-header">
+        <h3>@Model.Name</h3>
+    </div>
+    <div class="card-body">
+        <span>Genre: @Model.GenreType.Name</span>
+        <span>Release Date: @Model.ReleaseDate</span>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-lg" asp-page="./Details" asp-route-gameId="@Model.Id">Details</a>
+        <a class="btn btn-lg" asp-page="./Edit" asp-route-gameId="@Model.Id">Edit</a>
+        <a class="btn btn-lg" asp-page="./Delete" asp-route-gameId="@Model.Id">Delete</a>
+    </div>
+</div>
