@@ -1,0 +1,29 @@
+﻿@page
+@model RazorPagesApp.Pages.Games.GamesModel
+@{
+    ViewData["Title"] = "Games";
+}
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" asp-for="SearchTerm" name="searchTerm"/>
+            <span class="input-group-append">
+                <button class="btn btn-primary">
+                    Search
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
+@foreach(var game in Model.Games)
+{
+    <partial name="_Summary" model="game" />
+}
+
+<a asp-page="./Edit" class="btn btn-primary">Add New Game</a>
+
+@section footer {
+    <div>You are on the Game list page.</div>
+}

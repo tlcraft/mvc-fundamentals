@@ -1,0 +1,21 @@
+﻿@page "{gameId:long}"
+
+@model RazorPagesApp.Pages.Games.DetailsModel
+@{
+    ViewData["Title"] = "Game Details";
+}
+<h2>@Model.Game.Name</h2>
+<div>
+    Id: @Model.Game.Id
+</div>
+<div>
+    Genre: @Model.Game.GenreType.Name
+</div>
+<div>
+    Release Date: @Model.Game.ReleaseDate
+</div>
+@if(Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+<a asp-page="./Games" class="btn btn-primary">All Games</a>

@@ -32,13 +32,24 @@ namespace Shared.Services
             return gameModel;
         }
 
-        public int AddGame(GameModel newGame)
+        public List<GameModel> GetGamesByName(string name = null)
+        {
+            var selectedGames = this.efContext.Games
+                .Include(game => game.GenreType)
+                .Where(game => string.IsNullOrWhiteSpace(name) || game.Name.ToLower().Contains(name.ToLower()))
+                .ToList();
+
+            var gameModels = this.mapper.Map<List<Game>, List<GameModel>>(selectedGames);
+            return gameModels;
+        }
+
+        public long AddGame(GameModel newGame)
         {
             var game = this.mapper.Map<GameModel, Game>(newGame);
             this.efContext.Games.Add(game);
 
-            var totalStateEntriesWritten = this.efContext.SaveChanges();
-            return totalStateEntriesWritten;
+            this.efContext.SaveChanges();
+            return game.Id;
         }
 
         public int UpdateGame(GameModel selectedGame)
@@ -63,6 +74,11 @@ namespace Shared.Services
 
             var totalStateEntriesWritten = this.efContext.SaveChanges();
             return totalStateEntriesWritten;
+        }
+
+        public int GetTotalNumberOfGames()
+        {
+            return this.efContext.Games.Count();
         }
     }
 }

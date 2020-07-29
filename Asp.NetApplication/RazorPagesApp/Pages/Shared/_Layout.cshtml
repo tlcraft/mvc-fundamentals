@@ -24,6 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Games/Games">Games</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -37,6 +40,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
+            <vc:game-count></vc:game-count>
+            @RenderSection("footer", required: false)
             &copy; 2019 - RazorPagesApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
