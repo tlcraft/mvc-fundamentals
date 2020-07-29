@@ -75,5 +75,10 @@ namespace Shared.Services
             var totalStateEntriesWritten = this.efContext.SaveChanges();
             return totalStateEntriesWritten;
         }
+
+        public int GetTotalNumberOfGames()
+        {
+            return this.efContext.Games.Count();
+        }
     }
 }

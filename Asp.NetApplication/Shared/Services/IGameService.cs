@@ -11,5 +11,6 @@ namespace Shared.Services
         long AddGame(GameModel newGame);
         int UpdateGame(GameModel gameModel);
         int DeleteGame(long gameId);
+        int GetTotalNumberOfGames();
     }
 }
