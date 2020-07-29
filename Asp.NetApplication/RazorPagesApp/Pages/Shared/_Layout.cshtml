@@ -40,6 +40,12 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
+            <environment include="Development">
+                <h6>Hello World!</h6>
+            </environment>
+            <environment exclude="Development">
+                <h6>Welcome to the site!</h6>
+            </environment>
             <vc:game-count></vc:game-count>
             @RenderSection("footer", required: false)
             &copy; 2019 - RazorPagesApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
