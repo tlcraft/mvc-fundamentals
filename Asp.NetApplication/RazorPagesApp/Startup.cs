@@ -56,7 +56,7 @@ namespace RazorPagesApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseNodeModules();
             app.UseRouting();
 
             app.UseAuthorization();
