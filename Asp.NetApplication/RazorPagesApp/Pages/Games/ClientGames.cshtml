@@ -24,7 +24,6 @@
             $.ajax("/api/games/",
                 { method: "get" })
                 .then(function (response) {
-                    console.log(response);
                     $('#game').dataTable({
                         data: response,
                         columns: [
