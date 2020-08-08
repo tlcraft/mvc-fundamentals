@@ -7,7 +7,7 @@
 <form method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" asp-for="SearchTerm" name="searchTerm"/>
+            <input type="search" class="form-control" asp-for="SearchTerm" name="searchTerm" />
             <span class="input-group-append">
                 <button class="btn btn-primary">
                     Search
@@ -16,14 +16,19 @@
         </div>
     </div>
 </form>
+<div class="cards">
+    @foreach (var game in Model.Games)
+    {
+        <partial name="_Summary" model="game" />
+    }
 
-@foreach(var game in Model.Games)
-{
-    <partial name="_Summary" model="game" />
-}
-
-<a asp-page="./Edit" class="btn btn-primary">Add New Game</a>
+    <a asp-page="./Edit" class="btn btn-primary">Add New Game</a>
+</div>
 
 @section footer {
     <div>You are on the Game list page.</div>
+}
+
+@section css {
+    <link href="@Url.Content("~/css/games.css")" rel="stylesheet" />
 }
