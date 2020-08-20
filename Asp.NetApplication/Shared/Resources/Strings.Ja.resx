@@ -118,15 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="GameGenreType" xml:space="preserve">
-    <value>Genre</value>
-    <comment>A game's genre.</comment>
+    <value>ジャンル</value>
   </data>
   <data name="GameName" xml:space="preserve">
-    <value>Name</value>
-    <comment>A game's name.</comment>
+    <value>名前</value>
   </data>
   <data name="GameReleaseDate" xml:space="preserve">
-    <value>Release Date</value>
-    <comment>A game's release date.</comment>
+    <value>発売日</value>
   </data>
 </root>

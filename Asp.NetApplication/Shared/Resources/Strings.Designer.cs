@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Shared {
+namespace Shared.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Shared {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class StringResource {
+    public class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StringResource() {
+        internal Strings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Shared {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Shared.StringResource", typeof(StringResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Shared.Resources.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Genre.
+        ///   Looks up a localized string similar to GenreX.
         /// </summary>
         public static string GameGenreType {
             get {
@@ -70,7 +70,7 @@ namespace Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to NameX.
         /// </summary>
         public static string GameName {
             get {
@@ -79,7 +79,7 @@ namespace Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Release Date.
+        ///   Looks up a localized string similar to Release DateX.
         /// </summary>
         public static string GameReleaseDate {
             get {
