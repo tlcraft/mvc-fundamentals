@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Shared.Services;
+﻿extern alias SharedComponents;
+using Microsoft.AspNetCore.Mvc;
+using SharedComponents::Shared.Services;
 
 namespace RazorPagesApp.ViewComponents
 {

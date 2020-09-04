@@ -1,12 +1,16 @@
+extern alias SharedComponents;
 using AutoMapper;
 using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.Services;
+using Microsoft.Extensions.Options;
+using SharedComponents::Shared.Services;
+using System.Globalization;
 
 namespace RazorPagesApp
 {
@@ -22,6 +26,18 @@ namespace RazorPagesApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("jp")
+                };
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
             services.AddRazorPages();
             services.AddControllers();
             services.AddSingleton<ICurrentDateServiceFactory, CurrentDateServiceFactory>();
@@ -58,7 +74,8 @@ namespace RazorPagesApp
             app.UseStaticFiles();
             app.UseNodeModules();
             app.UseRouting();
-
+            var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value;
+            app.UseRequestLocalization(localizationOptions);
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

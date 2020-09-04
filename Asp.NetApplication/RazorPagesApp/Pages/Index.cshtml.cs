@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shared.Services;
+﻿extern alias SharedComponents;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using SharedComponents::Shared.Services;
 
 namespace RazorPagesApp.Pages
 {

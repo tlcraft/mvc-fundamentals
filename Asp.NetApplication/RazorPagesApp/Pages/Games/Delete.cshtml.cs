@@ -1,7 +1,8 @@
+extern alias SharedComponents; 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shared.Services;
-using Shared.Models;
+using SharedComponents::Shared.Services;
+using SharedComponents::Shared.Models;
 
 namespace RazorPagesApp.Pages.Games
 {
