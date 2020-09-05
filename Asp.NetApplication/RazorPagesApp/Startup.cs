@@ -31,7 +31,7 @@ namespace RazorPagesApp
                 var supportedCultures = new[]
                 {
                     new CultureInfo("en"),
-                    new CultureInfo("jp")
+                    new CultureInfo("ja")
                 };
                 options.DefaultRequestCulture = new RequestCulture("en");
                 options.SupportedCultures = supportedCultures;
