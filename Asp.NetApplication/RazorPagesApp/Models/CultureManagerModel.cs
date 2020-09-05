@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 
-namespace Shared.Models
+namespace Models
 {
     public class CultureManagerModel
     {
