@@ -1,8 +1,9 @@
+extern alias SharedComponents;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Shared.Models;
-using Shared.Services;
+using SharedComponents::Shared.Models;
+using SharedComponents::Shared.Services;
 using System.Collections.Generic;
 
 namespace RazorPagesApp.Pages.Games

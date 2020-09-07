@@ -1,12 +1,16 @@
 ﻿@page
+@using Microsoft.AspNetCore.Localization
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
 }
 
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        <p>Today is @Html.DisplayFor(model => model.CurrentDate).</p>
-        <p>Logged in as @Html.DisplayFor(model => model.UserName).</p>
-    </div>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Today is @Html.DisplayFor(model => model.CurrentDate).</p>
+    <p>Logged in as @Html.DisplayFor(model => model.UserName).</p>
+    <p>Current Culture: @requestCulture.Culture.DisplayName @requestCulture.Culture.Name</p>
+</div>
