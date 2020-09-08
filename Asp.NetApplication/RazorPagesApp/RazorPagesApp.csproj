@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Configurations>Debug;Release;Testing</Configurations>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
     <Target Name="PostBuild" AfterTargets="ComputeFilesToPublish">
