@@ -3,6 +3,9 @@ using System.Globalization;
 
 namespace Models
 {
+    /// <summary>
+    /// The CultureManagerModel is used to determine which user selected language is currently set for localization purposes. It also contains the full set of supported languages.
+    /// </summary>
     public class CultureManagerModel
     {
         public CultureInfo CurrentUICulture { get; set; }
