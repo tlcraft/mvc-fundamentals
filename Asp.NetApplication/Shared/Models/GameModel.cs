@@ -5,6 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Shared.Models
 {
+    /// <summary>
+    /// The shared <c>GameModel</c> class.
+    /// <para>This class is the business DTO for game information.</para>
+    /// </summary>
     public class GameModel
     {
         public long Id { get; set; }
