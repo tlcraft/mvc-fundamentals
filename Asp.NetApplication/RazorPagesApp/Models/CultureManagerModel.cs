@@ -8,17 +8,23 @@ namespace Models
     /// <list type="bullet">
     /// <item>
     /// <term>CurrentUICulture</term>
-    /// <description>Gets the value of the currently set UI culture.</description>
+    /// <description>Gets the value of the currently selected UI culture.</description>
     /// </item>
     /// <item>
     /// <term>SupportedCultures</term>
-    /// <description>Gets the list of supported UI cultures.</description>
+    /// <description>Gets the list of supported cultures.</description>
     /// </item>
     /// </list>
     /// </summary>
     public class CultureManagerModel
     {
+        /// <value>
+        /// Gets the value of the currently selected UI culture
+        /// </value>
         public CultureInfo CurrentUICulture { get; set; }
+        /// <value>
+        /// Gets the list of supported cultures
+        /// </value>
         public List<CultureInfo> SupportedCultures { get; set; }
     }
 }
