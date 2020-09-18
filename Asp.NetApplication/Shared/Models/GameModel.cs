@@ -29,16 +29,28 @@ namespace Shared.Models
     /// </summary>
     public class GameModel
     {
+        /// <value>
+        /// Gets the Id of the game.
+        /// </value>
         public long Id { get; set; }
+        /// <value>
+        /// Gets the name of the game.
+        /// </value>
         [Required]
         [Display(Name = "GameName", ResourceType = typeof(Strings))]
         [StringLength(450, ErrorMessage = "Name cannot be longer than 450 characters.")]
         public string Name { get; set; }
+        /// <value>
+        /// Gets the release date of the game.
+        /// </value>
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "GameReleaseDate", ResourceType = typeof(Strings))]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
+        /// <value>
+        /// Gets the genre of the game.
+        /// </value>
         [Required]
         [Display(Name = "GameGenreType", ResourceType =typeof(Strings))]
         public GenreType GenreType { get; set; }

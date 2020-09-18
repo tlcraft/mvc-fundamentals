@@ -7,8 +7,46 @@
         <member name="T:Shared.Models.GameModel">
             <summary>
             The shared <c>GameModel</c> class.
+            <list type="bullet">
+            <item>
+            <term>Id</term>
+            <description>The ID of the game.</description>
+            </item>
+            <item>
+            <term>Name</term>
+            <description>The Name of the game.</description>
+            </item>
+            <item>
+            <term>ReleaseDate</term>
+            <description>The Release Date of the game.</description>
+            </item>
+            <item>
+            <term>GenreType</term>
+            <description>The Genre of the game.</description>
+            </item>
+            </list>
             <para>This class is the business DTO for game information.</para>
             </summary>
+        </member>
+        <member name="P:Shared.Models.GameModel.Id">
+            <value>
+            Gets the Id of the game.
+            </value>
+        </member>
+        <member name="P:Shared.Models.GameModel.Name">
+            <value>
+            Gets the name of the game.
+            </value>
+        </member>
+        <member name="P:Shared.Models.GameModel.ReleaseDate">
+            <value>
+            Gets the release date of the game.
+            </value>
+        </member>
+        <member name="P:Shared.Models.GameModel.GenreType">
+            <value>
+            Gets the genre of the game.
+            </value>
         </member>
         <member name="T:Shared.Resources.Strings">
             <summary>
